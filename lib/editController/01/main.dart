@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wtoolset/draw/p18/01/world.dart';
+import 'package:wtoolset/draw/study/p18/01/world.dart';
 import 'package:wtoolset/editController/01/music_play.dart';
 import 'package:wtoolset/editController/01/music_play_controller.dart';
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wtoolset/draw/bar_chart/index.dart';
+import 'package:wtoolset/draw/coordinate_system/day_01/coordinate_system_day_01.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,6 +16,18 @@ class _HomePageState extends State<HomePage> {
       "title": "路径",
       "onTap": () {
         // Get.to(() => main05.MyApp());
+      },
+    },
+    {
+      "title": "可操作坐标系",
+      "onTap": () {
+        Get.to(() => const CoordinateSystemDay01());
+      },
+    },
+    {
+      "title": "自绘条形图",
+      "onTap": () {
+        Get.to(() => const BarChartDemo());
       },
     },
   ];

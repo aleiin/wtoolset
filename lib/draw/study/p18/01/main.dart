@@ -1,11 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wtoolset/draw/study/p18/01/world.dart';
-import 'package:wtoolset/editController/01/music_play.dart';
-import 'package:wtoolset/editController/01/music_play_controller.dart';
-import 'package:wtoolset/scroll/01/ceiling.dart';
-import 'package:wtoolset/scroll/01/nest_demo.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized(); // 确定初始化
@@ -15,12 +10,7 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,14 +19,15 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: Scaffold(
-      //   // backgroundColor: Colors.black,
-      //   appBar: AppBar(
-      //     title: const Text("仿掘金首页"),
-      //   ),
-      //   body: const Ceiling(),
-      // ),
-      home: const NestDemo(),
+      home: Scaffold(
+        // backgroundColor: Colors.black,
+        appBar: AppBar(
+          title: const Text("粒子效果上"),
+        ),
+        body: Center(
+          child: World(),
+        ),
+      ),
     );
   }
 }
