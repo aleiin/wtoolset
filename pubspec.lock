@@ -104,14 +104,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  get:
-    dependency: "direct main"
-    description:
-      name: get
-      sha256: "75d9218416b46898e616527215cdbe9528680a68b33921a29d74e3274da4b063"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "4.5.1"
   html:
     dependency: transitive
     description:

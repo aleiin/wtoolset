@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:wtoolset/draw/bar_chart/index.dart';
 import 'package:wtoolset/draw/coordinate_system/day_01/coordinate_system_day_01.dart';
+import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,26 +11,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final viewList = <Map<String, Object>>[
-    {
-      "title": "路径",
-      "onTap": () {
-        // Get.to(() => main05.MyApp());
+  final List<Map<String, Object>> viewList = <Map<String, Object>>[];
+
+  @override
+  void initState() {
+    super.initState();
+    viewList.addAll(<Map<String, Object>>[
+      {
+        "title": "路径",
+        "onTap": () {
+          // Get.to(() => main05.MyApp());
+        },
       },
-    },
-    {
-      "title": "可操作坐标系",
-      "onTap": () {
-        Get.to(() => const CoordinateSystemDay01());
+      {
+        "title": "可操作坐标系",
+        "onTap": () {
+          const Navigator().pushRoute(context, const CoordinateSystemDay01());
+        },
       },
-    },
-    {
-      "title": "自绘条形图",
-      "onTap": () {
-        Get.to(() => const BarChartDemo());
+      {
+        "title": "自绘条形图",
+        "onTap": () {
+          const Navigator().pushRoute(context, const BarChartDemo());
+        },
       },
-    },
-  ];
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {

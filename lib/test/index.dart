@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:wtoolset/test/01/main.dart' as main01;
 import 'package:wtoolset/test/02/main.dart' as main02;
+import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,20 +12,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final viewList = <Map<String, Object>>[
-    {
-      "title": "测试",
-      "onTap": () {
-        Get.to(() => main01.MyApp());
+  final List<Map<String, Object>> viewList = <Map<String, Object>>[];
+
+  @override
+  void initState() {
+    super.initState();
+
+    viewList.addAll(<Map<String, Object>>[
+      {
+        "title": "测试",
+        "onTap": () {
+          const Navigator().pushRoute(context, main01.MyApp());
+        },
       },
-    },
-    {
-      "title": "顶部下拉图片放大",
-      "onTap": () {
-        Get.to(() => main02.MyApp());
+      {
+        "title": "顶部下拉图片放大",
+        "onTap": () {
+          const Navigator().pushRoute(context, main02.MyApp());
+        },
       },
-    },
-  ];
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {

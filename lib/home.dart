@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:wtoolset/anim/index.dart' as anim;
 import 'package:wtoolset/draw/index.dart' as draw;
@@ -10,6 +9,7 @@ import 'package:wtoolset/performance/index.dart' as performance;
 import 'package:wtoolset/scroll/index.dart' as scroll;
 import 'package:wtoolset/path/index.dart' as path;
 import 'package:wtoolset/test/index.dart' as test;
+import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,56 +19,64 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final viewList = <Map<String, Object>>[
-    {
-      "title": "动画",
-      "onTap": () {
-        Get.to(() => const anim.HomePage());
+  ///
+  List<Map<String, Object>> viewList = <Map<String, Object>>[];
+
+  @override
+  void initState() {
+    super.initState();
+
+    viewList = <Map<String, Object>>[
+      {
+        "title": "动画",
+        "onTap": () {
+          const Navigator().pushRoute(context, const anim.HomePage());
+        },
       },
-    },
-    {
-      "title": "绘制",
-      "onTap": () {
-        Get.to(() => const draw.HomePage());
+      {
+        "title": "绘制",
+        "onTap": () {
+          const Navigator().pushRoute(context, const draw.HomePage());
+        },
       },
-    },
-    {
-      "title": "点击",
-      "onTap": () {
-        Get.to(() => const touch.HomePage());
+      {
+        "title": "点击",
+        "onTap": () {
+          const Navigator().pushRoute(context, const touch.HomePage());
+        },
       },
-    },
-    {
-      "title": "自定义控制器",
-      "onTap": () {
-        Get.to(() => const controller.HomePage());
+      {
+        "title": "自定义控制器",
+        "onTap": () {
+          const Navigator().pushRoute(context, const controller.HomePage());
+        },
       },
-    },
-    {
-      "title": "性能测试",
-      "onTap": () {
-        Get.to(() => const performance.HomePage());
+      {
+        "title": "性能测试",
+        "onTap": () {
+          const Navigator().pushRoute(context, const performance.HomePage());
+        },
       },
-    },
-    {
-      "title": "滑动",
-      "onTap": () {
-        Get.to(() => const scroll.HomePage());
+      {
+        "title": "滑动",
+        "onTap": () {
+          const Navigator().pushRoute(context, const scroll.HomePage());
+        },
       },
-    },
-    {
-      "title": "path",
-      "onTap": () {
-        Get.to(() => const path.HomePage());
+      {
+        "title": "path",
+        "onTap": () {
+          const Navigator().pushRoute(context, const path.HomePage());
+        },
       },
-    },
-    {
-      "title": "测试",
-      "onTap": () {
-        Get.to(() => const test.HomePage());
+      {
+        "title": "测试",
+        "onTap": () {
+          const Navigator().pushRoute(context, const test.HomePage());
+        },
       },
-    },
-  ];
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {

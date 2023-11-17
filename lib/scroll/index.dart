@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:wtoolset/scroll/01/main.dart' as main01;
+import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,14 +11,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final viewList = <Map<String, Object>>[
-    {
-      "title": "仿掘金首页",
-      "onTap": () {
-        Get.to(() => main01.MyApp());
+  final List<Map<String, Object>> viewList = <Map<String, Object>>[];
+
+  @override
+  void initState() {
+    super.initState();
+
+    viewList.addAll(<Map<String, Object>>[
+      {
+        "title": "仿掘金首页",
+        "onTap": () {
+          const Navigator().pushRoute(context, main01.MyApp());
+        },
       },
-    },
-  ];
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {
