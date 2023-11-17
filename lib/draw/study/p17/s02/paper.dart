@@ -1,5 +1,3 @@
-import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -18,7 +16,7 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
     );
   }
 
@@ -26,7 +24,7 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("画圆"),
+        title: const Text("画圆"),
       ),
       body: SafeArea(
         child: Align(
@@ -34,7 +32,7 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: 300,
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             color: Colors.blueAccent.withAlpha(33),
             child: CustomPaint(
               painter: PaperPainter(repaint: _animationController),

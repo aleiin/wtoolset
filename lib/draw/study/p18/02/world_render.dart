@@ -16,9 +16,9 @@ class WorldRender extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     canvas.drawRect(Offset.zero & size, stokePaint);
-    manage.particles.forEach((element) {
+    for (var element in manage.particles) {
       drawParticle(canvas, element);
-    });
+    }
   }
 
   void drawParticle(Canvas canvas, Particle particle) {

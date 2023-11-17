@@ -1,13 +1,11 @@
 import 'dart:async';
 import 'dart:ui' as ui;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:wtoolset/draw/study/common/coordinate.dart';
 
-import 'dart:ui' as ui;
 
 class Paper extends StatefulWidget {
   const Paper({Key? key}) : super(key: key);
@@ -88,96 +86,90 @@ class PaperPaint extends CustomPainter {
 
   /// 图片的绘制
   void _drawImage(Canvas canvas) {
-    if (image != null) {
-      canvas.drawImage(
-          image, Offset(-image.width / 2, -image.height / 2), _paint);
-    }
+    canvas.drawImage(
+        image, Offset(-image.width / 2, -image.height / 2), _paint);
   }
 
   /// 图片域绘制
   void _drawImageRect(Canvas canvas) {
-    if (image != null) {
-      canvas.drawImageRect(
-        image,
-        Rect.fromCenter(
-            center: Offset(image.width / 2, image.height / 2),
-            width: 60,
-            height: 60),
-        Rect.fromLTRB(0, 0, 100, 100).translate(200, 0),
-        _paint,
-      );
+    canvas.drawImageRect(
+      image,
+      Rect.fromCenter(
+          center: Offset(image.width / 2, image.height / 2),
+          width: 60,
+          height: 60),
+      const Rect.fromLTRB(0, 0, 100, 100).translate(200, 0),
+      _paint,
+    );
 
-      canvas.drawImageRect(
-        image,
-        Rect.fromCenter(
-            center: Offset(image.width / 2, image.height / 2 - 60),
-            width: 60,
-            height: 60),
-        Rect.fromLTRB(0, 0, 100, 100).translate(-280, -100),
-        _paint,
-      );
+    canvas.drawImageRect(
+      image,
+      Rect.fromCenter(
+          center: Offset(image.width / 2, image.height / 2 - 60),
+          width: 60,
+          height: 60),
+      const Rect.fromLTRB(0, 0, 100, 100).translate(-280, -100),
+      _paint,
+    );
 
-      canvas.drawImageRect(
-        image,
-        Rect.fromCenter(
-            center: Offset(image.width / 2 + 60, image.height / 2),
-            width: 60,
-            height: 60),
-        Rect.fromLTRB(0, 0, 100, 100).translate(-280, 50),
-        _paint,
-      );
-    }
+    canvas.drawImageRect(
+      image,
+      Rect.fromCenter(
+          center: Offset(image.width / 2 + 60, image.height / 2),
+          width: 60,
+          height: 60),
+      const Rect.fromLTRB(0, 0, 100, 100).translate(-280, 50),
+      _paint,
+    );
   }
 
   void _drawImageNine(Canvas canvas) {
-    if (image != null) {
-      canvas.drawImageNine(
+    canvas.drawImageNine(
+      image,
+      Rect.fromCenter(
+        center: Offset(image.width / 2, image.height - 6.0),
+        width: image.width - 20.0,
+        height: 2.0,
+      ),
+      Rect.fromCenter(
+        center: const Offset(0, 0),
+        width: 300,
+        height: 120,
+      ),
+      _paint,
+    );
+
+    canvas.drawImageNine(
         image,
         Rect.fromCenter(
-          center: Offset(image.width / 2, image.height - 6.0),
-          width: image.width - 20.0,
-          height: 2.0,
-        ),
+            center: Offset(image.width / 2, image.height - 6.0),
+            width: image.width - 20.0,
+            height: 2.0),
         Rect.fromCenter(
-          center: Offset(0, 0),
-          width: 300,
-          height: 120,
-        ),
-        _paint,
-      );
+                center: const Offset(
+                  0,
+                  0,
+                ),
+                width: 100,
+                height: 50)
+            .translate(250, 0),
+        _paint);
 
-      canvas.drawImageNine(
-          image,
-          Rect.fromCenter(
-              center: Offset(image.width / 2, image.height - 6.0),
-              width: image.width - 20.0,
-              height: 2.0),
-          Rect.fromCenter(
-                  center: Offset(
-                    0,
-                    0,
-                  ),
-                  width: 100,
-                  height: 50)
-              .translate(250, 0),
-          _paint);
-
-      canvas.drawImageNine(
-          image,
-          Rect.fromCenter(
-              center: Offset(image.width / 2, image.height - 6.0),
-              width: image.width - 20.0,
-              height: 2.0),
-          Rect.fromCenter(
-                  center: Offset(
-                    0,
-                    0,
-                  ),
-                  width: 80,
-                  height: 250)
-              .translate(-250, 0),
-          _paint);
-    }
+    canvas.drawImageNine(
+        image,
+        Rect.fromCenter(
+            center: Offset(image.width / 2, image.height - 6.0),
+            width: image.width - 20.0,
+            height: 2.0),
+        Rect.fromCenter(
+                center: const Offset(
+                  0,
+                  0,
+                ),
+                width: 80,
+                height: 250)
+            .translate(-250, 0),
+        _paint);
   }
 
   /// drawParagraph绘制文字
@@ -200,11 +192,11 @@ class PaperPaint extends CustomPainter {
     ui.Paragraph paragraph = builder.build();
 
     paragraph.layout(
-      ui.ParagraphConstraints(width: 300),
+      const ui.ParagraphConstraints(width: 300),
     );
     canvas.drawParagraph(paragraph, Offset.zero);
     canvas.drawRect(
-      Rect.fromLTRB(0, 0, 300, 40),
+      const Rect.fromLTRB(0, 0, 300, 40),
       _paint..color = Colors.blue.withAlpha(33),
     );
   }

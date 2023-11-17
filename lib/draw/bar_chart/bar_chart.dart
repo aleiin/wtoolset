@@ -184,8 +184,8 @@ class ChartPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height),
-    //     Paint()..color = Colors.blue.withOpacity(0.3));
+    canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height),
+        Paint()..color = Colors.blue.withOpacity(0.3));
 
     findYMaxWidth();
 
@@ -488,14 +488,14 @@ class ChartPainter extends CustomPainter {
 
     for (int i = 0; i <= 5; i++) {
       if (i == 0) {
-        _drawAxisText(canvas, '0', offset: const Offset(-10, 2));
+        // _drawAxisText(canvas, '0', offset: const Offset(-10, 2));
         canvas.translate(_kScaleWidth, -yStep);
         continue;
       }
 
       canvas.drawLine(
         const Offset(0, 0),
-        Offset(size.width - _kScaleHeight, 0),
+        Offset(size.width - _kScaleWidth, 0),
         gridPaint,
       );
 

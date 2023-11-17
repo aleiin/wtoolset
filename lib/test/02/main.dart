@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wtoolset/path/01/test_page.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized(); // 确定初始化
   // SystemChrome.setPreferredOrientations(// 使设备横屏显示
   //     [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
-  // SystemChrome.setEnabledSystemUIOverlays([]); // 全屏显示
+  // // SystemChrome.setEnabledSystemUIOverlays([]); // 全屏显示
   runApp(MyApp());
 }
 
@@ -162,7 +160,7 @@ class SliverTopBar extends StatelessWidget {
       children: [
         Column(
           children: [
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               child: Image.network(
                 "https://flutter.github.io/assets-for-api-docs/assets/widgets/puffin.jpg",
@@ -177,18 +175,18 @@ class SliverTopBar extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: 16,
                       top: 10,
                     ),
-                    child: Text("lalallalal"),
+                    child: const Text("lalallalal"),
                   ),
                   Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: 16,
                       top: 8,
                     ),
-                    child: Text("lalallalal"),
+                    child: const Text("lalallalal"),
                   ),
                 ],
               ),

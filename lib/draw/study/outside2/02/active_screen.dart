@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/animation.dart';
 
 import 'package:flutter/material.dart';
 import 'package:wtoolset/draw/study/outside2/02/data_modle.dart';
@@ -31,22 +30,22 @@ class _ActiveScreenState extends State<ActiveScreen>
   void initState() {
     // 开始点
 
-    p0 = Offset(100, 100);
+    p0 = const Offset(100, 100);
 
     // 控制点
 
-    p1 = Offset(100, 500);
+    p1 = const Offset(100, 500);
 
     //结束点
 
-    p2 = Offset(300, 300);
+    p2 = const Offset(300, 300);
 
     dataModle = DataModle();
 
     // 定义动画控制器
 
     animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 3));
+        AnimationController(vsync: this, duration: const Duration(seconds: 3));
 
     // 定义动画
 
@@ -73,7 +72,7 @@ class _ActiveScreenState extends State<ActiveScreen>
       appBar: AppBar(
         actions: [
           IconButton(
-              icon: Icon(Icons.play_arrow),
+              icon: const Icon(Icons.play_arrow),
               onPressed: () {
                 animationController.reset();
 
@@ -84,7 +83,7 @@ class _ActiveScreenState extends State<ActiveScreen>
       body: Stack(
         children: [
           Transform(
-            origin: Offset(25, 25), // 手动调整，适合内容不是正方形的场景
+            origin: const Offset(25, 25), // 手动调整，适合内容不是正方形的场景
 
             // alignment: Alignment.center, // 自动居中，内容是正方形的时候可以用这个
 
@@ -92,7 +91,7 @@ class _ActiveScreenState extends State<ActiveScreen>
               ..translate(dataModle.left, dataModle.top, 0.0)
               ..rotateZ(dataModle.rotate),
 
-            child: Container(
+            child: const SizedBox(
               height: 50,
               width: 50,
               // color: Colors.red,

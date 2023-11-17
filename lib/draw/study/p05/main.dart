@@ -12,8 +12,8 @@ void main() {
   // );
 
   ///全屏显示
-  SystemChrome.setEnabledSystemUIOverlays([]);
-  runApp(Paper());
+  // SystemChrome.setEnabledSystemUIOverlays([]);
+  runApp(const Paper());
 }
 
 class MyApp extends StatelessWidget {
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("路径"),
         ),
-        body: Paper(),
+        body: const Paper(),
       ),
     );
   }

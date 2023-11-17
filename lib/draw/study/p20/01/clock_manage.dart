@@ -43,7 +43,7 @@ class ClockManage with ChangeNotifier {
 
   int count = 0;
 
-  double _radius = 6;
+  final double _radius = 6;
 
   void collectDigit({
     int target = 0,

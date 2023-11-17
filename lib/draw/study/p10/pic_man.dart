@@ -25,7 +25,7 @@ class _PicManState extends State<PicMan> with SingleTickerProviderStateMixin {
       // lowerBound: 10, // 运动的下限
       // upperBound: 40, // 运动的上限
       vsync: this,
-      duration: Duration(seconds: 1), // 运动时长
+      duration: const Duration(seconds: 1), // 运动时长
     );
     // ..repeat(reverse: true);
 
@@ -40,7 +40,7 @@ class _PicManState extends State<PicMan> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      size: Size(100, 100),
+      size: const Size(100, 100),
       painter: PicManPainter(color: _colorAnimation, angle: _angleAnimation),
     );
   }
@@ -56,7 +56,7 @@ class PicManPainter extends CustomPainter {
   final Animation<Color?> color; // 颜色
   final Animation<double> angle; // 角度(与x轴交角, 角度制)
 
-  Paint _paint = Paint(); // 画笔
+  final Paint _paint = Paint(); // 画笔
 
   PicManPainter({required this.color, required this.angle})
       : super(repaint: angle); // 传入ListenAble可监听对象

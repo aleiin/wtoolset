@@ -29,7 +29,7 @@ class _PlayerState extends State<Player> with SingleTickerProviderStateMixin {
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
 
     if (widget.isPlays) {
@@ -101,7 +101,7 @@ class PaperPainter extends CustomPainter {
 
     canvas.restore();
 
-    onePath..moveTo(radius, 0);
+    onePath.moveTo(radius, 0);
 
     onePath.arcTo(
       Rect.fromCenter(
@@ -114,7 +114,7 @@ class PaperPainter extends CustomPainter {
       true,
     );
 
-    twoPath..moveTo(radius, 0);
+    twoPath.moveTo(radius, 0);
 
     twoPath.arcTo(
       Rect.fromCenter(

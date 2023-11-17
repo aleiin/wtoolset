@@ -12,6 +12,6 @@ void main() {
   );
 
   ///全屏显示
-  SystemChrome.setEnabledSystemUIOverlays([]);
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Paper()));
+  // SystemChrome.setEnabledSystemUIOverlays([]);
+  runApp(const MaterialApp(debugShowCheckedModeBanner: false, home: Paper()));
 }

@@ -18,14 +18,12 @@ class HandleWidget extends StatefulWidget {
 }
 
 class _HandleWidgetState extends State<HandleWidget> {
-  ValueNotifier<Offset> _offset = ValueNotifier(Offset.zero);
+  final ValueNotifier<Offset> _offset = ValueNotifier(Offset.zero);
 
   reset(DragEndDetails details) {
     _offset.value = Offset.zero;
 
-    if (widget.onMove != null) {
-      widget.onMove(0, 0);
-    }
+    widget.onMove(0, 0);
   }
 
   parser(DragUpdateDetails details) {
@@ -55,9 +53,7 @@ class _HandleWidgetState extends State<HandleWidget> {
       dy = -bgR * sin(thta);
     }
 
-    if (widget.onMove != null) {
-      widget.onMove(dx, dy); // 控制器回调
-    }
+    widget.onMove(dx, dy); 
 
     _offset.value = Offset(dx, dy);
   }
@@ -77,7 +73,7 @@ class _HandleWidgetState extends State<HandleWidget> {
 }
 
 class _HandlePainter extends CustomPainter {
-  Paint _paint = Paint();
+  final Paint _paint = Paint();
 
   final ValueNotifier<Offset> offset;
 

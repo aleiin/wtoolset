@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:wtoolset/draw/study/p18/01/world.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized(); // 确定初始化
   // SystemChrome.setPreferredOrientations(// 使设备横屏显示
   //     [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
-  // SystemChrome.setEnabledSystemUIOverlays([]); // 全屏显示
+  // // SystemChrome.setEnabledSystemUIOverlays([]); // 全屏显示
   runApp(MyApp());
 }
 
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("粒子效果上"),
         ),
-        body: Center(
+        body: const Center(
           child: World(),
         ),
       ),

@@ -18,7 +18,7 @@ class _CountriesFieldState extends State<CountriesField> {
     _focusNode.addListener(() {
       if (_focusNode.hasFocus) {
         _overlayEntry = _createOverlayEntry();
-        Overlay.of(context)?.insert(_overlayEntry!);
+        Overlay.of(context).insert(_overlayEntry!);
       } else {
         _overlayEntry?.remove();
       }

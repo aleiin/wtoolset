@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TouchInfo extends ChangeNotifier {
-  List<Offset> _points = [];
+  final List<Offset> _points = [];
 
   int _selectIndex = -1;
 
@@ -10,7 +10,6 @@ class TouchInfo extends ChangeNotifier {
   List<Offset> get points => _points;
 
   set selectIndex(int value) {
-    assert(value != null);
     if (_selectIndex == value) {
       return;
     }

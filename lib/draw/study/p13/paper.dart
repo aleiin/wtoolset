@@ -23,7 +23,7 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 15),
+      duration: const Duration(seconds: 15),
     )..forward();
   }
 
@@ -94,20 +94,20 @@ class PaperPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     var color = [
-      Color(0xFFF60C0C),
-      Color(0xFFF3B913),
-      Color(0xFFE7F716),
-      Color(0xFF3DF30B),
-      Color(0xFF0DF6EF),
-      Color(0xFF0829FB),
-      Color(0xFFB709F4),
+      const Color(0xFFF60C0C),
+      const Color(0xFFF3B913),
+      const Color(0xFFE7F716),
+      const Color(0xFF3DF30B),
+      const Color(0xFF0DF6EF),
+      const Color(0xFF0829FB),
+      const Color(0xFFB709F4),
     ];
 
     var pos = [1.0 / 7, 2.0 / 7, 3.0 / 7, 4.0 / 7, 5.0 / 7, 6.0 / 7, 1.0];
 
     paint.shader = ui.Gradient.linear(
-      Offset(0, 0),
-      Offset(100, 0),
+      const Offset(0, 0),
+      const Offset(100, 0),
       color,
       pos,
       TileMode.mirror,
@@ -117,7 +117,7 @@ class PaperPainter extends CustomPainter {
 
     // Path path = Path()..moveTo(p1.dx, p1.dy);
     path.reset();
-    path..moveTo(p1.dx, p1.dy);
+    path.moveTo(p1.dx, p1.dy);
 
     for (var i = 1; i < points.length - 1; i++) {
       double xc = (points[i].dx + points[i + 1].dx) / 2;
@@ -129,14 +129,14 @@ class PaperPainter extends CustomPainter {
     // canvas.drawPath(path, paint);
 
     PathMetrics pms = path.computeMetrics();
-    pms.forEach((element) {
+    for (var element in pms) {
       Tangent? tangent =
           element.getTangentForOffset(element.length * repaint.value);
 
       canvas.drawPath(
           element.extractPath(0, element.length * repaint.value), paint);
       canvas.drawCircle(tangent!.position, 5, Paint()..color = Colors.blue);
-    });
+    }
   }
 
   @override

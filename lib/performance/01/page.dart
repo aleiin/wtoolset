@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:wtoolset/performance/01/card.dart';
 import 'package:wtoolset/performance/01/data.dart';
 
@@ -19,11 +18,11 @@ class _MyPageState extends State<MyPage> {
       // ),
       body: Column(
         children: [
-          MyCard(
+          const MyCard(
             height: 240,
             color: Colors.blue,
             child: Stack(
-              children: const [
+              children: [
                 Text("新货"),
               ],
             ),
@@ -68,7 +67,7 @@ class _MyPageState extends State<MyPage> {
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: NewWidget(),
+                    child: const NewWidget(),
                   ),
                 ),
                 const Text(

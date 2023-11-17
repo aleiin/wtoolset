@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:wtoolset/draw/study/p17/s02/paper.dart';
 
 void main() {
@@ -12,14 +11,14 @@ void main() {
   // );
   //
   // ///全屏显示
-  // SystemChrome.setEnabledSystemUIOverlays([]);
+  // // SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Paper(),
     );
   }

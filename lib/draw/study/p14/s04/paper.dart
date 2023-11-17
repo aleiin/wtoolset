@@ -16,7 +16,7 @@ class _PaperState extends State<Paper> {
 
   /// 单位圆(即半径为1)控制线长
   final rate = 0.551915024494;
-  double _radius = 160;
+  final double _radius = 160;
 
   @override
   void initState() {
@@ -30,22 +30,22 @@ class _PaperState extends State<Paper> {
     /// 第一段线
     pos.add(Offset(0, rate) * _radius);
     pos.add(Offset(1 - rate, 1) * _radius);
-    pos.add(Offset(1, 1) * _radius);
+    pos.add(const Offset(1, 1) * _radius);
 
     ///第二段线
     pos.add(Offset(1 + rate, 1) * _radius);
     pos.add(Offset(2, rate) * _radius);
-    pos.add(Offset(2, 0) * _radius);
+    pos.add(const Offset(2, 0) * _radius);
 
     ///第三段线
     pos.add(Offset(2, -rate) * _radius);
     pos.add(Offset(1 + rate, -1) * _radius);
-    pos.add(Offset(1, -1) * _radius);
+    pos.add(const Offset(1, -1) * _radius);
 
     ///第四段线
     pos.add(Offset(1 - rate, -1) * _radius);
     pos.add(Offset(0, -rate) * _radius);
-    pos.add(Offset(0, 0));
+    pos.add(const Offset(0, 0));
 
     return pos;
   }
@@ -105,7 +105,7 @@ class _PaperState extends State<Paper> {
 class PaperPainter extends CustomPainter {
   Coordinate coordinate = Coordinate();
 
-  Paint _helpPaint = Paint()
+  final Paint _helpPaint = Paint()
     ..color = Colors.purple
     ..style = PaintingStyle.stroke
     ..strokeCap = StrokeCap.round;

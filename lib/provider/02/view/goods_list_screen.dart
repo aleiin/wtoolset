@@ -10,7 +10,7 @@ class GoodsListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("商品列表"),
+        title: const Text("商品列表"),
       ),
       body: ChangeNotifierProvider(
         create: (_) => GoodsListProvider(),

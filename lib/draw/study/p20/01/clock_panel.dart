@@ -18,7 +18,7 @@ class _ClockPanelState extends State<ClockPanel>
   @override
   void initState() {
     super.initState();
-    pm = ClockManage(size: Size(200, 100));
+    pm = ClockManage(size: const Size(200, 100));
     pm.collectParticles();
     _ticker = createTicker(_tick)..start();
   }

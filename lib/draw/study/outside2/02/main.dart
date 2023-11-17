@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:wtoolset/draw/study/outside2/02/active_screen.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized(); // 确定初始化
   // SystemChrome.setPreferredOrientations(// 使设备横屏显示
   //     [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
-  // SystemChrome.setEnabledSystemUIOverlays([]); // 全屏显示
+  // // SystemChrome.setEnabledSystemUIOverlays([]); // 全屏显示
   runApp(MyApp());
 }
 

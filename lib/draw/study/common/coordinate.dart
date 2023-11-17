@@ -1,6 +1,4 @@
-import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// 基础坐标轴
@@ -60,7 +58,7 @@ class Coordinate {
   void _drawBottomRight(Canvas canvas, Size size) {
     canvas.save();
     for (int i = 0; i < size.height / 2 / step; i++) {
-      canvas.drawLine(Offset(0, 0), Offset(size.width / 2, 0), _gridPint);
+      canvas.drawLine(const Offset(0, 0), Offset(size.width / 2, 0), _gridPint);
       canvas.translate(0, step);
     }
 

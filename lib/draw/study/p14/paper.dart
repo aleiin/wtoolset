@@ -27,16 +27,16 @@ class PaperPainter extends CustomPainter {
   Coordinate coordinate = Coordinate();
 
   /// 画笔
-  Paint _paint = Paint();
+  final Paint _paint = Paint();
 
   /// 辅助画笔
-  Paint _helpPaint = Paint();
+  final Paint _helpPaint = Paint();
 
   /// 路径
   Path path = Path();
 
-  Offset p1 = Offset(100, 100);
-  Offset p2 = Offset(120, -60);
+  Offset p1 = const Offset(100, 100);
+  Offset p2 = const Offset(120, -60);
 
   @override
   void paint(Canvas canvas, Size size) {

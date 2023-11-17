@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:wtoolset/anim/index.dart' as anim;
 import 'package:wtoolset/draw/index.dart' as draw;
 import 'package:wtoolset/overlay/toast/toast.dart';
-import 'package:wtoolset/test/video_player_demo.dart';
 import 'package:wtoolset/touch/index.dart' as touch;
 import 'package:wtoolset/editController/index.dart' as controller;
 import 'package:wtoolset/performance/index.dart' as performance;

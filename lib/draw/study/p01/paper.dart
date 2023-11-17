@@ -30,7 +30,7 @@ class PagerPainter extends CustomPainter {
     // canvas.drawCircle(Offset(100, 100), 10, paint);
 
     /// 绘制线
-    canvas.drawLine(Offset.zero, Offset(100, 100), paint);
+    canvas.drawLine(Offset.zero, const Offset(100, 100), paint);
 
     Path path = Path();
     path.moveTo(100, 100);

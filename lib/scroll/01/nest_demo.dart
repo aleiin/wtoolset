@@ -244,11 +244,11 @@ class SearchBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           ),
-          Wrap(
+          const Wrap(
             spacing: 3,
             alignment: WrapAlignment.center,
             crossAxisAlignment: WrapCrossAlignment.center,
-            children: const [
+            children: [
               Icon(Icons.assignment_turned_in_outlined),
               Text(
                 '已签',

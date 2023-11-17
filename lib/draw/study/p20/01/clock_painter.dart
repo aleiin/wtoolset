@@ -12,7 +12,7 @@ class ClockPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (manage != null) {
       manage!.particles?.where((element) => element != null).forEach((element) {
-        clockPaint..color = element.color;
+        clockPaint.color = element.color;
         canvas.drawCircle(
             Offset(element.x, element.y), element.size, clockPaint);
       });

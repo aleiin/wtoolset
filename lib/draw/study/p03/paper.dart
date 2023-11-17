@@ -80,12 +80,12 @@ class PaperPainter extends CustomPainter {
     // canvas.translate(size.width / 2, size.height / 2);
 
     /// 画圆
-    canvas.drawCircle(Offset(0, 0), 50, paint);
+    canvas.drawCircle(const Offset(0, 0), 50, paint);
 
     /// 画线
     canvas.drawLine(
-      Offset(20, 20),
-      Offset(50, 50),
+      const Offset(20, 20),
+      const Offset(50, 50),
       paint
         ..color = Colors.red
         ..strokeWidth = 5
@@ -95,14 +95,14 @@ class PaperPainter extends CustomPainter {
   }
 
   void _drawDot(Canvas canvas, Paint paint) {
-    final int count = 12;
+    const int count = 12;
     paint
       ..color = Colors.orange
       ..style = PaintingStyle.stroke;
     canvas.save();
     for (int i = 0; i < count; i++) {
       var step = 2 * pi / count;
-      canvas.drawLine(Offset(80, 0), Offset(100, 0), paint);
+      canvas.drawLine(const Offset(80, 0), const Offset(100, 0), paint);
       canvas.rotate(step);
     }
     canvas.restore();
@@ -130,7 +130,7 @@ class PaperPainter extends CustomPainter {
   void _drawBottomRight(Canvas canvas, Size size) {
     canvas.save();
     for (int i = 0; i < size.height / 2 / step; i++) {
-      canvas.drawLine(Offset(0, 0), Offset(size.width / 2, 0), _gridPint);
+      canvas.drawLine(const Offset(0, 0), Offset(size.width / 2, 0), _gridPint);
       canvas.translate(0, step);
     }
 
@@ -168,13 +168,13 @@ class PaperPainter extends CustomPainter {
   /// 画点
   void _drawPointsWithPoints(Canvas canvas) {
     final List<Offset> points = [
-      Offset(-120, -20),
-      Offset(-80, -80),
-      Offset(-40, -40),
-      Offset(0, -100),
-      Offset(40, -140),
-      Offset(80, -160),
-      Offset(120, -100),
+      const Offset(-120, -20),
+      const Offset(-80, -80),
+      const Offset(-40, -40),
+      const Offset(0, -100),
+      const Offset(40, -140),
+      const Offset(80, -160),
+      const Offset(120, -100),
     ];
 
     _paint
@@ -221,23 +221,23 @@ class PaperPainter extends CustomPainter {
 
     // [1] 矩形中心构造
     Rect rectFromCenter =
-        Rect.fromCenter(center: Offset(0, 0), width: 160, height: 160);
+        Rect.fromCenter(center: const Offset(0, 0), width: 160, height: 160);
     canvas.drawRect(rectFromCenter, _paint);
 
     // [2].矩形左上右下构造
-    Rect rectFromLTRB = Rect.fromLTRB(-120, -120, -80, -80);
+    Rect rectFromLTRB = const Rect.fromLTRB(-120, -120, -80, -80);
     canvas.drawRect(rectFromLTRB, _paint..color = Colors.red);
 
     // [3].矩形内切圆构造
-    Rect rectFromLTWH = Rect.fromLTWH(80, -120, 40, 40);
+    Rect rectFromLTWH = const Rect.fromLTWH(80, -120, 40, 40);
     canvas.drawRect(rectFromLTWH, _paint..color = Colors.orange);
 
     // [4].矩形内切圆构造
-    Rect rectFromCircle = Rect.fromCircle(center: Offset(100, 100), radius: 20);
+    Rect rectFromCircle = Rect.fromCircle(center: const Offset(100, 100), radius: 20);
     canvas.drawRect(rectFromCircle, _paint..color = Colors.green);
 
     // [5].矩形两点构造
-    Rect rectFromPoints = Rect.fromPoints(Offset(-120, 80), Offset(-80, 120));
+    Rect rectFromPoints = Rect.fromPoints(const Offset(-120, 80), const Offset(-80, 120));
     canvas.drawRect(rectFromPoints, _paint..color = Colors.purple);
   }
 
@@ -248,16 +248,16 @@ class PaperPainter extends CustomPainter {
       ..strokeWidth = 1.5;
     // [1].圆角矩形fromRectXY构造
     Rect rectFromCenter =
-        Rect.fromCenter(center: Offset(0, 0), width: 160, height: 160);
+        Rect.fromCenter(center: const Offset(0, 0), width: 160, height: 160);
     canvas.drawRRect(RRect.fromRectXY(rectFromCenter, 40, 20), _paint);
 
     // [2].圆角矩形fromLTRBXY构造
-    canvas.drawRRect(RRect.fromLTRBXY(-120, -120, -80, -80, 10, 10),
+    canvas.drawRRect(const RRect.fromLTRBXY(-120, -120, -80, -80, 10, 10),
         _paint..color = Colors.red);
 
     // [3].圆角矩形fromLTRBR构造
     canvas.drawRRect(
-      RRect.fromLTRBR(80, -120, 120, -80, Radius.circular(10)),
+      RRect.fromLTRBR(80, -120, 120, -80, const Radius.circular(10)),
       _paint..color = Colors.orange,
     );
 
@@ -268,17 +268,17 @@ class PaperPainter extends CustomPainter {
         80,
         120,
         120,
-        bottomRight: Radius.elliptical(10, 10),
-        topLeft: Radius.elliptical(10, 10),
+        bottomRight: const Radius.elliptical(10, 10),
+        topLeft: const Radius.elliptical(10, 10),
       ),
       _paint..color = Colors.green,
     );
 
     // [5].矩形两点构造
-    Rect rectFromPoints = Rect.fromPoints(Offset(-120, 120), Offset(-80, 80));
+    Rect rectFromPoints = Rect.fromPoints(const Offset(-120, 120), const Offset(-80, 80));
     canvas.drawRRect(
         RRect.fromRectAndCorners(rectFromPoints,
-            bottomRight: Radius.elliptical(10, 10)),
+            bottomRight: const Radius.elliptical(10, 10)),
         _paint..color = Colors.purple);
   }
 
@@ -288,16 +288,16 @@ class PaperPainter extends CustomPainter {
       ..color = Colors.blue
       ..strokeWidth = 1.5;
     Rect outRect =
-        Rect.fromCenter(center: Offset(0, 0), width: 160, height: 160);
+        Rect.fromCenter(center: const Offset(0, 0), width: 160, height: 160);
     Rect inRect =
-        Rect.fromCenter(center: Offset(0, 0), width: 100, height: 100);
+        Rect.fromCenter(center: const Offset(0, 0), width: 100, height: 100);
 
     canvas.drawDRRect(RRect.fromRectXY(outRect, 20, 20),
         RRect.fromRectXY(inRect, 20, 20), _paint);
 
     Rect outRect2 =
-        Rect.fromCenter(center: Offset(0, 0), width: 60, height: 60);
-    Rect inRect2 = Rect.fromCenter(center: Offset(0, 0), width: 40, height: 40);
+        Rect.fromCenter(center: const Offset(0, 0), width: 60, height: 60);
+    Rect inRect2 = Rect.fromCenter(center: const Offset(0, 0), width: 40, height: 40);
     canvas.drawDRRect(
       RRect.fromRectXY(outRect2, 10, 10),
       RRect.fromRectXY(inRect2, 10, 10),
@@ -306,13 +306,13 @@ class PaperPainter extends CustomPainter {
   }
 
   void _drawFill(Canvas canvas) {
-    _paint..style = PaintingStyle.stroke;
+    _paint.style = PaintingStyle.stroke;
     canvas.save();
     canvas.translate(-200, 0);
-    canvas.drawCircle(Offset(0, 0), 60, _paint);
+    canvas.drawCircle(const Offset(0, 0), 60, _paint);
     canvas.restore();
 
-    var rect = Rect.fromCenter(center: Offset(0, 0), width: 120, height: 100);
+    var rect = Rect.fromCenter(center: const Offset(0, 0), width: 120, height: 100);
     canvas.drawOval(rect, _paint);
 
     canvas.save();
@@ -324,17 +324,17 @@ class PaperPainter extends CustomPainter {
 
   void _drawPoint(Canvas canvas, Size size) {
     var colors = [
-      Color(0xFFF60C0C),
-      Color(0xFFF3B913),
-      Color(0xFFE7F716),
-      Color(0xFF3DF30B),
-      Color(0xFF0DF6EF),
-      Color(0xFF0829FB),
-      Color(0xFFB709F4),
+      const Color(0xFFF60C0C),
+      const Color(0xFFF3B913),
+      const Color(0xFFE7F716),
+      const Color(0xFF3DF30B),
+      const Color(0xFF0DF6EF),
+      const Color(0xFF0829FB),
+      const Color(0xFFB709F4),
     ];
     var pos = [1.0 / 7, 2.0 / 7, 3.0 / 7, 4.0 / 7, 5.0 / 7, 6.0 / 7, 1.0];
     _paint
-      ..shader = ui.Gradient.linear(
+      .shader = ui.Gradient.linear(
         Offset.zero,
         Offset(size.width, 0),
         colors,

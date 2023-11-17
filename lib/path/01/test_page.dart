@@ -144,7 +144,7 @@ class Clipper extends CustomClipper<Path> {
     path.quadraticBezierTo(v17.dx, v17.dy, v18.dx, v18.dy);
 
     for (int i = 1; i <= 18; i++) {
-      print('print 00:59: ${i}');
+      print('print 00:59: $i');
     }
 
     // //波浪曲线路径

@@ -2,7 +2,6 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:wtoolset/draw/study/common/coordinate.dart';
 
 class Paper extends StatefulWidget {
@@ -18,7 +17,7 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 3))
+        AnimationController(vsync: this, duration: const Duration(seconds: 3))
           ..forward();
   }
 
@@ -29,7 +28,7 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
       child: Column(
         children: [
           OutlinedButton(
-            child: Text('开始'),
+            child: const Text('开始'),
             onPressed: () {
               if (_animationController.isCompleted) {
                 _animationController.reverse(from: 0);
@@ -184,9 +183,9 @@ class PaperPaint extends CustomPainter {
       ..strokeWidth = 2
       ..style = PaintingStyle.stroke;
 
-    var rect = Rect.fromCenter(center: Offset(0, 0), width: 160, height: 100);
+    var rect = Rect.fromCenter(center: const Offset(0, 0), width: 160, height: 100);
     path.lineTo(30, 30);
-    path..arcTo(rect, 0, pi * 1.5, true);
+    path.arcTo(rect, 0, pi * 1.5, true);
 
     canvas.drawPath(path, _paint);
 
@@ -194,7 +193,7 @@ class PaperPaint extends CustomPainter {
 
     canvas.translate(200, 0);
     path.lineTo(30, 30);
-    path..arcTo(rect, 0, pi * 1.5, false);
+    path.arcTo(rect, 0, pi * 1.5, false);
 
     canvas.drawPath(path, _paint);
   }
@@ -206,12 +205,12 @@ class PaperPaint extends CustomPainter {
       ..color = Colors.purpleAccent
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
-    path..lineTo(80, -40);
+    path.lineTo(80, -40);
 
     path
       ..arcToPoint(
-        Offset(40, 40),
-        radius: Radius.circular(60),
+        const Offset(40, 40),
+        radius: const Radius.circular(60),
         largeArc: false,
       )
       ..close();
@@ -220,11 +219,11 @@ class PaperPaint extends CustomPainter {
 
     path.reset();
     canvas.translate(-160, 0);
-    path..lineTo(80, -40);
+    path.lineTo(80, -40);
     path
       ..arcToPoint(
-        Offset(40, 40),
-        radius: Radius.circular(60),
+        const Offset(40, 40),
+        radius: const Radius.circular(60),
         largeArc: true,
         clockwise: false,
       )
@@ -234,11 +233,11 @@ class PaperPaint extends CustomPainter {
 
     path.reset();
     canvas.translate(320, 0);
-    path..lineTo(80, -40);
+    path.lineTo(80, -40);
     path
       ..arcToPoint(
-        Offset(40, 40),
-        radius: Radius.circular(60),
+        const Offset(40, 40),
+        radius: const Radius.circular(60),
         largeArc: true,
         clockwise: true,
       )
@@ -249,8 +248,8 @@ class PaperPaint extends CustomPainter {
 
   /// 画圆锥曲线
   void _drawConicToAndRelativeConicTo(Canvas canvas) {
-    final Offset p1 = Offset(80, -100);
-    final Offset p2 = Offset(160, 0);
+    const Offset p1 = Offset(80, -100);
+    const Offset p2 = Offset(160, 0);
 
     Path path = Path();
     _paint
@@ -259,7 +258,7 @@ class PaperPaint extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     /// 抛物线
-    path..conicTo(p1.dx, p1.dy, p2.dx, p2.dy, 1);
+    path.conicTo(p1.dx, p1.dy, p2.dx, p2.dy, 1);
     canvas.drawPoints(
       PointMode.points,
       [p1, p2],
@@ -271,7 +270,7 @@ class PaperPaint extends CustomPainter {
     canvas.translate(-180, 0);
 
     /// 椭圆线
-    path..conicTo(p1.dx, p1.dy, p2.dx, p2.dy, 0.5);
+    path.conicTo(p1.dx, p1.dy, p2.dx, p2.dy, 0.5);
     canvas.drawPath(path, _paint);
 
     path.reset();
@@ -284,8 +283,8 @@ class PaperPaint extends CustomPainter {
 
   /// 画二阶赛尔
   void _drawQuadraticBezierTo(Canvas canvas) {
-    final Offset p1 = Offset(100, -100);
-    final Offset p2 = Offset(160, 50);
+    const Offset p1 = Offset(100, -100);
+    const Offset p2 = Offset(160, 50);
 
     Path path = Path();
 
@@ -300,7 +299,7 @@ class PaperPaint extends CustomPainter {
       ],
       _paint..strokeCap,
     );
-    path..quadraticBezierTo(p1.dx, p1.dy, p2.dx, p2.dy);
+    path.quadraticBezierTo(p1.dx, p1.dy, p2.dx, p2.dy);
     path.relativeQuadraticBezierTo(p1.dx, p1.dy, p2.dx, p2.dy);
     canvas.drawPath(path, _paint);
   }
@@ -310,11 +309,11 @@ class PaperPaint extends CustomPainter {
     Path path = Path();
     path
       ..lineTo(100, 100)
-      ..addRect(Rect.fromPoints(Offset(100, 100), Offset(160, 160)))
+      ..addRect(Rect.fromPoints(const Offset(100, 100), const Offset(160, 160)))
       ..relativeLineTo(100, -100)
       ..addRRect(
         RRect.fromRectXY(
-          Rect.fromPoints(Offset(100, 100), Offset(160, 160))
+          Rect.fromPoints(const Offset(100, 100), const Offset(160, 160))
               .translate(100, -100),
           10,
           10,
@@ -327,7 +326,7 @@ class PaperPaint extends CustomPainter {
   void _drawPolygon(Canvas canvas) {
     Path path = Path();
 
-    var p0 = Offset(100, 100);
+    var p0 = const Offset(100, 100);
     path
       ..lineTo(100, 100)
       ..addPolygon([
@@ -383,15 +382,15 @@ class PaperPaint extends CustomPainter {
 
     canvas.drawPath(path, _paint);
     canvas.drawPath(
-        path.shift(Offset(120, 0)), _paint); //指定点Offset将路径进行平移,且返回一条新的路径
-    canvas.drawPath(path.shift(Offset(240, 0)), _paint);
+        path.shift(const Offset(120, 0)), _paint); //指定点Offset将路径进行平移,且返回一条新的路径
+    canvas.drawPath(path.shift(const Offset(240, 0)), _paint);
   }
 
   /// 判断点是否在路径之内和得到当前路径所在的矩形区域
   void _drawPathToContainsAndGetBounds(Canvas canvas, Size size) {
     Path path = Path();
 
-    _paint..style = PaintingStyle.fill;
+    _paint.style = PaintingStyle.fill;
 
     path
       ..relativeMoveTo(0, 0)
@@ -402,12 +401,12 @@ class PaperPaint extends CustomPainter {
 
     canvas.drawPath(path, _paint);
 
-    print('print 15:09: ${path.contains(Offset(20, 20))}');
-    print('print 15:09: ${path.contains(Offset(0, 20))}');
+    print('print 15:09: ${path.contains(const Offset(20, 20))}');
+    print('print 15:09: ${path.contains(const Offset(0, 20))}');
 
     Rect bounds = path.getBounds();
 
-    print('print 15:13: ${bounds}');
+    print('print 15:13: $bounds');
 
     // canvas.drawRect(
     //   bounds,
@@ -418,7 +417,7 @@ class PaperPaint extends CustomPainter {
 
     for (int i = 0; i < 8; i++) {
       canvas
-        ..drawPath(
+        .drawPath(
             path.transform(Matrix4.rotationZ(i * pi / 4).storage), _paint);
     }
   }
@@ -426,7 +425,7 @@ class PaperPaint extends CustomPainter {
   /// 路径结合
   void _drawPathToCombine(Canvas canvas) {
     Path path = Path();
-    _paint..style = PaintingStyle.fill;
+    _paint.style = PaintingStyle.fill;
 
     path
       ..relativeMoveTo(0, 0)
@@ -475,11 +474,10 @@ class PaperPaint extends CustomPainter {
       ..relativeLineTo(40, 40)
       ..close();
 
-    path.addOval(Rect.fromCenter(center: Offset(0, 0), width: 80, height: 80));
+    path.addOval(Rect.fromCenter(center: const Offset(0, 0), width: 80, height: 80));
     PathMetrics pathMetrics = path.computeMetrics();
 
-    pathMetrics.forEach(
-      (element) {
+    for (var element in pathMetrics) {
         Tangent? tangent =
             element.getTangentForOffset(element.length * progress.value);
         print(
@@ -493,8 +491,7 @@ class PaperPaint extends CustomPainter {
           5,
           Paint()..color = Colors.deepOrangeAccent,
         );
-      },
-    );
+      }
 
     canvas.drawPath(path, _paint);
   }
@@ -577,33 +574,33 @@ class PaperPaint extends CustomPainter {
     // Offset p1 = Offset(120, -120);
     // Offset p2 = Offset(220, 80);
 
-    Offset p0 = Offset(50, 50);
+    Offset p0 = const Offset(50, 50);
 
     // 控制点
 
-    Offset p1 = Offset(100, 300);
+    Offset p1 = const Offset(100, 300);
 
     //结束点
 
-    Offset p2 = Offset(300, 300);
+    Offset p2 = const Offset(300, 300);
 
     path.moveTo(p0.dx, p0.dy);
 
-    path..quadraticBezierTo(p1.dx, p1.dy, p2.dx, p2.dy);
+    path.quadraticBezierTo(p1.dx, p1.dy, p2.dx, p2.dy);
 
     PathMetrics pms = path.computeMetrics();
 
-    pms.forEach((pm) {
+    for (var pm in pms) {
       Tangent? tangent = pm.getTangentForOffset(pm.length * progress.value);
 
       double angle = -tangent!.angle / pi * 180;
 
-      drawItem(canvas, tangent.position, Colors.orange, tangent!.angle);
+      drawItem(canvas, tangent.position, Colors.orange, tangent.angle);
 
-      print('tangent!.angle:${tangent.angle} -- angle: ${angle}');
+      print('tangent!.angle:${tangent.angle} -- angle: $angle');
 
       // canvas.drawPath(_drawAirPath(canvas, tangent.position, angle), _paint);
-    });
+    }
 
     canvas.drawPath(path, _paint);
   }

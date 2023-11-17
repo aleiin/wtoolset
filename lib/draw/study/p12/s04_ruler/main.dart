@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:wtoolset/draw/study/p12/s04_ruler/ruler_chooser.dart';
 
 void main() {
@@ -9,7 +8,7 @@ void main() {
   // SystemChrome.setPreferredOrientations(
   //     [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
   // //全屏显示
-  // SystemChrome.setEnabledSystemUIOverlays([]);
+  // // SystemChrome.setEnabledSystemUIOverlays([]);
 
   runApp(MyApp());
 }

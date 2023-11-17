@@ -11,7 +11,7 @@ class _AirplaneState extends State<Airplane> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("飞机"),
+      child: const Text("飞机"),
     );
   }
 }

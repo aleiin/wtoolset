@@ -27,7 +27,7 @@ class RulerChooser extends StatefulWidget {
 }
 
 class _RulerChooserState extends State<RulerChooser> {
-  ValueNotifier<double> _dx = ValueNotifier(0.0);
+  final ValueNotifier<double> _dx = ValueNotifier(0.0);
 
   double dx = 0;
 
@@ -45,9 +45,7 @@ class _RulerChooserState extends State<RulerChooser> {
     }
     _dx.value = dx;
 
-    if (widget.onChanged != null) {
-      widget.onChanged(details.delta.dx / (_kSpacer + _kStrokeWidth));
-    }
+    widget.onChanged(details.delta.dx / (_kSpacer + _kStrokeWidth));
   }
 
   @override
@@ -117,8 +115,8 @@ class _HandlePainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
   }
 
-  Paint _paint = Paint(); // 画笔
-  Paint _pointPaint = Paint();
+  final Paint _paint = Paint(); // 画笔
+  final Paint _pointPaint = Paint();
 
   late final ValueNotifier<double> dx;
 
@@ -165,7 +163,7 @@ class _HandlePainter extends CustomPainter {
         _simpleDrawText(
           canvas,
           i.toString(),
-          offset: Offset(-3, _kHeightLevel3 + 5),
+          offset: const Offset(-3, _kHeightLevel3 + 5),
         );
       } else {
         y = _kHeightLevel1;

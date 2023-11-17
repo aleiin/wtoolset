@@ -13,7 +13,6 @@ class TouchInfo extends ChangeNotifier {
   List<Offset> get points => _points;
 
   set selectIndex(int value) {
-    assert(value != null);
     if (_selectIndex == value) return;
 
     _selectIndex = value;

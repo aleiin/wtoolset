@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wtoolset/draw/study/p10/pic_man.dart';
 
-void main() => runApp(Paper());
+void main() => runApp(const Paper());
 
 /// create by 韦斌 on 2021/7/26 22:22
 /// 说明: 动画
@@ -18,9 +18,9 @@ class _PaperState extends State<Paper> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("animation"),
+          title: const Text("animation"),
         ),
-        body: Center(
+        body: const Center(
           child: PicMan(),
         ),
       ),

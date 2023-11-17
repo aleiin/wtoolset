@@ -16,7 +16,7 @@ class _PaperState extends State<Paper> {
 
   @override
   void initState() {
-    print('print 23:30: ${Offset(1, 1) * 100}');
+    print('print 23:30: ${const Offset(1, 1) * 100}');
     super.initState();
   }
 
@@ -75,7 +75,7 @@ class PaperPainter extends CustomPainter {
   late List<Offset> _pos;
 
   /// 辅助画笔
-  Paint _helpPaint = Paint()
+  final Paint _helpPaint = Paint()
     ..color = Colors.purple
     ..style = PaintingStyle.stroke
     ..strokeCap = StrokeCap.round;
@@ -113,7 +113,7 @@ class PaperPainter extends CustomPainter {
   }
 
   void _drawHelp(Canvas canvas) {
-    _helpPaint..color = Colors.purple;
+    _helpPaint.color = Colors.purple;
     canvas.drawPoints(PointMode.polygon, _pos, _helpPaint..strokeWidth = 1);
     canvas.drawPoints(PointMode.points, _pos, _helpPaint..strokeWidth = 8);
   }

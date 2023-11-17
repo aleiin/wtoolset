@@ -25,8 +25,8 @@ class _WorldState extends State<World> with SingleTickerProviderStateMixin {
     super.initState();
     // initParticleManage();
 
-    pm.size = Size(300, 200);
-    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    pm.size = const Size(300, 200);
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (pm.particles.length > 20) {
         timer.cancel();
       }
@@ -44,7 +44,7 @@ class _WorldState extends State<World> with SingleTickerProviderStateMixin {
     });
 
     _animationController = AnimationController(
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       vsync: this,
     )..addListener(pm.tick);
   }
@@ -65,7 +65,7 @@ class _WorldState extends State<World> with SingleTickerProviderStateMixin {
   // }
 
   void initParticleManage() {
-    pm.size = Size(300, 200);
+    pm.size = const Size(300, 200);
     for (var i = 0; i < 30; i++) {
       pm.particles.add(Particle(
         color: randomRGB(),

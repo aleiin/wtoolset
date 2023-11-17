@@ -20,7 +20,7 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
   }
 
@@ -28,7 +28,7 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("画码表"),
+        title: const Text("画码表"),
       ),
       body: SafeArea(
         child: Column(
@@ -38,7 +38,7 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 300,
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 color: Colors.blueAccent.withAlpha(33),
                 child: CustomPaint(
                   painter: PaperPainter(repaint: _animationController),
@@ -46,9 +46,9 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
               ),
             ),
             Player(
-              size: Size(15, 15),
+              size: const Size(15, 15),
               callback: (isPlay) {
-                print('print 00:16: ${isPlay}');
+                print('print 00:16: $isPlay');
               },
             ),
           ],
@@ -158,7 +158,7 @@ class PaperPainter extends CustomPainter {
 
     canvas.restore();
 
-    onePath..moveTo(radius, 0);
+    onePath.moveTo(radius, 0);
 
     onePath.arcTo(
       Rect.fromCenter(
@@ -171,7 +171,7 @@ class PaperPainter extends CustomPainter {
       true,
     );
 
-    twoPath..moveTo(radius, 0);
+    twoPath.moveTo(radius, 0);
 
     twoPath.arcTo(
       Rect.fromCenter(
@@ -259,9 +259,9 @@ class PaperPainter extends CustomPainter {
 
     PathMetrics pathMetrics = path.computeMetrics();
 
-    stokePaint..strokeWidth = _kStrokeWidth;
+    stokePaint.strokeWidth = _kStrokeWidth;
 
-    pathMetrics.forEach((element) {
+    for (var element in pathMetrics) {
       canvas.drawPath(
         element.extractPath(0, element.length * _kColorStopRate),
         stokePaint..color = _kColors[0],
@@ -281,7 +281,7 @@ class PaperPainter extends CustomPainter {
         ),
         stokePaint..color = _kColors[2],
       );
-    });
+    }
 
     // canvas.drawPath(path, stokePaint);
   }
@@ -379,7 +379,7 @@ class PaperPainter extends CustomPainter {
 
     _drawAxisText(
       canvas,
-      "${(value * repaint.value).toStringAsFixed(1)}",
+      (value * repaint.value).toStringAsFixed(1),
       fontSize: 16,
       alignment: Alignment.center,
       color: Colors.black,
@@ -394,7 +394,7 @@ class PaperPainter extends CustomPainter {
     for (int i = _kMin; i <= count; i++) {
       var thta = pi / 180 * (90 + initAngle + (_kAngle / count) * i);
 
-      print('print 23:48: ${thta}');
+      print('print 23:48: $thta');
       if (i < count * _kColorStopRate) {
         color = _kColors[0];
       } else if (i < count * (1 - _kColorStopRate)) {
@@ -410,7 +410,7 @@ class PaperPainter extends CustomPainter {
       );
 
       canvas.drawRRect(
-        RRect.fromRectAndRadius(rect, Radius.circular(3)),
+        RRect.fromRectAndRadius(rect, const Radius.circular(3)),
         fillPaint..color = color,
       );
       _drawAxisText(

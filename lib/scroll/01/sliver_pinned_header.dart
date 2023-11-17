@@ -20,7 +20,6 @@ class SliverPinnedHeader extends StatelessWidget {
         color: color,
       ),
     );
-    ;
   }
 }
 

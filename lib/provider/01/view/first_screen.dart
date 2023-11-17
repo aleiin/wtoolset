@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wtoolset/provider/01/model/counter_model.dart';
 import 'package:wtoolset/provider/01/view/goods_list_screen.dart';
-import 'package:wtoolset/provider/01/view/second_page.dart';
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({Key? key}) : super(key: key);

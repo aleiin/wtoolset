@@ -18,7 +18,7 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
     )..forward();
   }
 
@@ -26,7 +26,7 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("char"),
+        title: const Text("char"),
       ),
       body: SafeArea(
         child: Align(
@@ -34,7 +34,7 @@ class _PaperState extends State<Paper> with SingleTickerProviderStateMixin {
           child: Container(
             width: 300,
             height: 300,
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             color: Colors.blueAccent.withAlpha(33),
             child: CustomPaint(
               painter: PaperPainter(repaint: _animationController),
@@ -145,23 +145,23 @@ class PaperPainter extends CustomPainter {
 
     for (int i = 0; i <= 5; i++) {
       if (i == 0) {
-        _drawAxisText(canvas, "0", offset: Offset(-10, 2));
+        _drawAxisText(canvas, "0", offset: const Offset(-10, 2));
         canvas.translate(0, -yStep);
         continue;
       }
 
       canvas.drawLine(
-        Offset(0, 0),
+        const Offset(0, 0),
         Offset(size.width - _kScaleHeight, 0),
         gridPaint,
       );
       canvas.drawLine(
-        Offset(-_kScaleHeight, 0),
+        const Offset(-_kScaleHeight, 0),
         Offset.zero,
         axisPaint,
       );
-      String str = '${(numStep * i).toStringAsFixed(0)}';
-      _drawAxisText(canvas, str, offset: Offset(-10, 2));
+      String str = (numStep * i).toStringAsFixed(0);
+      _drawAxisText(canvas, str, offset: const Offset(-10, 2));
       canvas.translate(0, -yStep);
     }
     canvas.restore();
@@ -173,7 +173,7 @@ class PaperPainter extends CustomPainter {
     canvas.save();
     canvas.translate(xStep, 0);
     for (int i = 0; i < xData.length; i++) {
-      canvas.drawLine(Offset.zero, Offset(0, _kScaleHeight), axisPaint);
+      canvas.drawLine(Offset.zero, const Offset(0, _kScaleHeight), axisPaint);
       _drawAxisText(
         canvas,
         xData[i],
@@ -237,7 +237,7 @@ class PaperPainter extends CustomPainter {
       double dataHeight = -(yData[i] / maxData * (size.height - _kScaleHeight));
       line.add(Offset(xStep * i - xStep / 2, dataHeight));
     }
-    linePaint..strokeWidth = 1;
+    linePaint.strokeWidth = 1;
   }
 
   void _drawLineChart(Canvas canvas) {
@@ -247,11 +247,11 @@ class PaperPainter extends CustomPainter {
     for (int i = 1; i < line.length; i++) {
       path.lineTo(line[i].dx, line[i].dy);
     }
-    linePaint..strokeWidth = 1;
+    linePaint.strokeWidth = 1;
     PathMetrics pathMetric = path.computeMetrics();
-    pathMetric.forEach((e) {
+    for (var e in pathMetric) {
       canvas.drawPath(e.extractPath(0, e.length * repaint.value), linePaint);
-    });
+    }
   }
 
   @override

@@ -33,7 +33,7 @@ class Toast {
     );
 
     //插入到 Overlay中显示 OverlayEntry
-    Overlay.of(context)!.insert(overlayEntry);
+    Overlay.of(context).insert(overlayEntry);
 
     //延时两秒，移除 OverlayEntry
     Future.delayed(const Duration(seconds: 2)).then((value) {
@@ -90,17 +90,17 @@ class Toast {
                         ) {
                           return GestureDetector(
                             onTap: () {},
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
+                              children: [
                                 Icon(Icons.add),
-                                const SizedBox(
+                                SizedBox(
                                   height: 4,
                                 ),
                                 Text(
                                   "lalalal",
                                   overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(),
+                                  style: TextStyle(),
                                 ),
                               ],
                             ),
@@ -136,7 +136,7 @@ class Toast {
       );
 
       //插入到 Overlay中显示 OverlayEntry
-      Overlay.of(context)!.insert(overlayEntry!);
+      Overlay.of(context).insert(overlayEntry!);
     }
 
     // //延时两秒，移除 OverlayEntry

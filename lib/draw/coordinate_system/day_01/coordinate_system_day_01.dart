@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                   pointValues.repaint();
                 },
-                child: Text('复原'),
+                child: const Text('复原'),
               ),
               OutlinedButton(
                 onPressed: () {
@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _onScaleUpdate(ScaleUpdateDetails details) {
-    print('print 17:17: ${details}');
+    print('print 17:17: $details');
     coordinate.scale(details.scale);
     pointValues.repaint();
     // double rate = coordinate.range.xSpan / 2 * 0.002;

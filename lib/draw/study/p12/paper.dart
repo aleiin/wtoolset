@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wtoolset/draw/study/p10/pic_man.dart';
 import 'package:wtoolset/draw/study/p12/handle_widget.dart';
 
-void main() => runApp(Paper());
+void main() => runApp(const Paper());
 
 /// create by 韦斌 on 2021/7/27 22:43
 /// 说明: 手势
@@ -26,7 +25,7 @@ class _PaperState extends State<Paper> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("GestureDetector"),
+          title: const Text("GestureDetector"),
         ),
         body: Row(
           mainAxisAlignment: MainAxisAlignment.center,

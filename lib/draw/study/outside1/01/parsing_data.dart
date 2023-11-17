@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// create by 韦斌 on 2021/11/25 23:11
@@ -132,7 +131,7 @@ class _ParsingDataState extends State<ParsingData> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         border: Border.all(
-          color: borderColor != null ? borderColor : Color(0xFF000000),
+          color: borderColor ?? const Color(0xFF000000),
           width: borderWidth,
         ),
       ),
@@ -180,7 +179,7 @@ class _ParsingDataState extends State<ParsingData> {
     return Row(
       children: [
         Text(text ?? ""),
-        Expanded(
+        const Expanded(
           child: TextField(),
         ),
       ],
@@ -207,7 +206,7 @@ class _ParsingDataState extends State<ParsingData> {
         Text(text ?? ""),
         Flexible(
           child: Row(
-            children: viewList != null ? viewList : [],
+            children: viewList ?? [],
           ),
         ),
       ],
@@ -237,14 +236,14 @@ class _ParsingDataState extends State<ParsingData> {
             positionCurrent = index;
             setState(() {});
           },
-          child: Container(
+          child: SizedBox(
             height: 48,
             // color: Colors.white,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(children[index]),
-                if (positionCurrent == index) Icon(Icons.done),
+                if (positionCurrent == index) const Icon(Icons.done),
               ],
             ),
           ),
@@ -263,7 +262,7 @@ class _ParsingDataState extends State<ParsingData> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 3,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(12),
@@ -281,7 +280,7 @@ class _ParsingDataState extends State<ParsingData> {
                     width: MediaQuery.of(context).size.width,
                     height: 48,
                     alignment: Alignment.center,
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Icon(
@@ -324,7 +323,7 @@ class _ParsingDataState extends State<ParsingData> {
       child: Container(
         height: 48,
         color: Colors.transparent,
-        margin: EdgeInsets.symmetric(vertical: 2),
+        margin: const EdgeInsets.symmetric(vertical: 2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -332,7 +331,7 @@ class _ParsingDataState extends State<ParsingData> {
             Row(
               children: [
                 Text(title ?? ""),
-                Icon(Icons.chevron_right),
+                const Icon(Icons.chevron_right),
               ],
             ),
           ],
@@ -359,7 +358,7 @@ class _ParsingDataState extends State<ParsingData> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(children[index]),
-              if (positionCurrent == index) Icon(Icons.done),
+              if (positionCurrent == index) const Icon(Icons.done),
             ],
           ),
         ),
@@ -396,7 +395,7 @@ class _ParsingDataState extends State<ParsingData> {
                   Navigator.of(context).pop();
                 },
                 child: Container(
-                  child: Text("取消"),
+                  child: const Text("取消"),
                   height: 44,
                   alignment: Alignment.center,
                 ),
