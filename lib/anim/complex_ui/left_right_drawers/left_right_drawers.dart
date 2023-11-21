@@ -1,17 +1,20 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:wtoolset/anim/complex_ui/left_right_drawers/bottom_view.dart';
+import 'package:wtoolset/anim/complex_ui/left_right_drawers/top_view.dart';
 import 'package:wtoolset/common.dart';
 import 'package:wtoolset/draw/bar_chart/bar_chart.dart';
 
-class ComplexUI extends StatefulWidget {
-  const ComplexUI({Key? key}) : super(key: key);
+/// 左右抽屉效果
+class LeftRightDrawers extends StatefulWidget {
+  const LeftRightDrawers({Key? key}) : super(key: key);
 
   @override
-  State<ComplexUI> createState() => _ComplexUIState();
+  State<LeftRightDrawers> createState() => _LeftRightDrawersState();
 }
 
-class _ComplexUIState extends State<ComplexUI>
+class _LeftRightDrawersState extends State<LeftRightDrawers>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
@@ -29,7 +32,7 @@ class _ComplexUIState extends State<ComplexUI>
     );
 
     Future.delayed(Duration.zero, () {
-      maxSlide = MediaQuery.of(context).size.width / 1.5;
+      maxSlide = MediaQuery.of(context).size.width / 1.2;
     });
 
     // _animationController.forward();
@@ -89,31 +92,11 @@ class _ComplexUIState extends State<ComplexUI>
 
   @override
   Widget build(BuildContext context) {
-    var myDrawer = Container(
-      color: Colors.blue,
-    );
-
     var myChild = Container(
       color: Colors.yellow,
     );
 
     return Scaffold(
-      // appBar: AppBar(
-      //   leading: IconButton(
-      //     onPressed: () {},
-      //     icon: const Icon(Icons.menu),
-      //   ),
-      //   title: const Text("复杂UI"),
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () {
-      //         _animationController.reset();
-      //         _animationController.forward();
-      //       },
-      //       icon: const Icon(Icons.restart_alt),
-      //     )
-      //   ],
-      // ),
       body: GestureDetector(
         onHorizontalDragStart: onHorizontalDragStart,
         onHorizontalDragUpdate: onHorizontalDragUpdate,
@@ -127,35 +110,37 @@ class _ComplexUIState extends State<ComplexUI>
 
               return Stack(
                 children: [
-                  myDrawer,
+                  BottomView(),
                   Transform(
                     transform: Matrix4.identity()
                       ..translate(slide)
                       ..scale(scale),
                     alignment: Alignment.centerLeft,
-                    child: myChild,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: Offset(-2, 0),
+                            blurRadius: 20,
+                            spreadRadius: 4,
+                          )
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: TopView(
+                          onLeading: () {
+                            toggle();
+                          },
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               );
             }),
       ),
-
-      // body: AnimatedBuilder(
-      //   animation: _animationController,
-      //   child: Center(
-      //     child: Container(
-      //       width: 100,
-      //       height: 100,
-      //       color: Colors.orange,
-      //     ),
-      //   ),
-      //   builder: (context, child) {
-      //     return Transform.rotate(
-      //       angle: _animationController.value * pi,
-      //       child: child,
-      //     );
-      //   },
-      // ),
     );
   }
 }

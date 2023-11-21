@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ume_kit_console_plus/flutter_ume_kit_console_plus.dart';
+import 'package:flutter_ume_kit_perf_plus/flutter_ume_kit_perf_plus.dart';
+import 'package:flutter_ume_kit_ui_plus/flutter_ume_kit_ui_plus.dart';
+import 'package:flutter_ume_plus/flutter_ume_plus.dart';
 
 import 'home.dart';
 
@@ -6,7 +10,24 @@ void main() {
   // debugProfileBuildsEnabled = true;
   // debugProfilePaintsEnabled = true;
   // debugPaintLayerBordersEnabled = true;
-  runApp(const MyApp());
+  // runApp(const MyApp());
+
+  PluginManager.instance // 注册插件
+    ..register(const WidgetInfoInspector())
+    ..register(const WidgetDetailInspector())
+    ..register(const ColorSucker())
+    ..register(AlignRuler())
+    ..register(const ColorPicker()) // 新插件
+    ..register(const TouchIndicator()) // 新插件
+    ..register(Performance())
+    // ..register(ShowCode())
+    ..register(const MemoryInfoPage())
+    // ..register(CpuInfoPage())
+    // ..register(DeviceInfoPanel())
+    ..register(Console());
+  // ..register(DioInspector(dio: dio));
+
+  runApp(const UMEWidget(child: MyApp(), enable: true));
 }
 
 class MyApp extends StatelessWidget {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wtoolset/anim/complex_ui/index.dart';
+import 'package:wtoolset/anim/complex_ui/left_right_drawers/left_right_drawers.dart';
 import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,6 +18,13 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     viewList.addAll(<Map<String, Object>>[
+      {
+        "title": "左右抽屉视觉差",
+        "onTap": () {
+          const Navigator().pushRoute(context, const LeftRightDrawers());
+          // Get.to(() => main05.MyApp());
+        },
+      },
       {
         "title": "复杂UI",
         "onTap": () {

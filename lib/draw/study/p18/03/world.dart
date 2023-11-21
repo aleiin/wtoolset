@@ -104,32 +104,32 @@ class _WorldState extends State<World> with SingleTickerProviderStateMixin {
   }
 
   void initParticles() async {
-    ByteData data = await rootBundle.load("assets/images/flutter.png");
-    List<int> bytes =
-        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-    image.Image? imageSrc = image.decodeImage(bytes);
-
-    if (imageSrc != null) {
-      double offsetX = (pm.size.width - imageSrc.width) / 2;
-      double offsetY = (pm.size.height - imageSrc.height) / 2;
-
-      for (int i = 0; i < imageSrc.width; i++) {
-        for (int j = 0; j < imageSrc.height; j++) {
-          if (imageSrc.getPixel(i, j) == 0xff000000) {
-            Particle particle = Particle(
-              x: i * 1.0 + offsetX,
-              y: j * 1.0 + offsetY,
-              vx: 4 * random.nextDouble() * pow(-1, random.nextInt(20)),
-              vy: 4 * random.nextDouble() * pow(-1, random.nextInt(20)),
-              ay: 0.1,
-              size: 0.5,
-              color: Colors.blue,
-            );
-            pm.particles.add(particle);
-          }
-        }
-      }
-    }
+    // ByteData data = await rootBundle.load("assets/images/flutter.png");
+    // List<int> bytes =
+    //     data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    // image.Image? imageSrc = image.decodeImage(bytes);
+    //
+    // if (imageSrc != null) {
+    //   double offsetX = (pm.size.width - imageSrc.width) / 2;
+    //   double offsetY = (pm.size.height - imageSrc.height) / 2;
+    //
+    //   for (int i = 0; i < imageSrc.width; i++) {
+    //     for (int j = 0; j < imageSrc.height; j++) {
+    //       if (imageSrc.getPixel(i, j) == 0xff000000) {
+    //         Particle particle = Particle(
+    //           x: i * 1.0 + offsetX,
+    //           y: j * 1.0 + offsetY,
+    //           vx: 4 * random.nextDouble() * pow(-1, random.nextInt(20)),
+    //           vy: 4 * random.nextDouble() * pow(-1, random.nextInt(20)),
+    //           ay: 0.1,
+    //           size: 0.5,
+    //           color: Colors.blue,
+    //         );
+    //         pm.particles.add(particle);
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   Color randomRGB({
