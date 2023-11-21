@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wtoolset/anim/complex_ui/index.dart';
+import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,14 +10,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final viewList = <Map<String, Object>>[
-    {
-      "title": "路径",
-      "onTap": () {
-        // Get.to(() => main05.MyApp());
+  final List<Map<String, Object>> viewList = <Map<String, Object>>[];
+
+  @override
+  void initState() {
+    super.initState();
+
+    viewList.addAll(<Map<String, Object>>[
+      {
+        "title": "复杂UI",
+        "onTap": () {
+          const Navigator().pushRoute(context, const ComplexUI());
+          // Get.to(() => main05.MyApp());
+        },
       },
-    },
-  ];
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {

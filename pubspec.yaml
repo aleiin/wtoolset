@@ -15,6 +15,7 @@ dependencies:
   image: ^3.0.8
   video_player: ^2.2.19
   provider: ^6.0.2
+  mobile_scanner: ^3.5.2
 
 dev_dependencies:
   flutter_test:
