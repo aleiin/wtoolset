@@ -1,26 +1,24 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:wtoolset/anim/complex_ui/left_right_drawers/bottom_view.dart';
-import 'package:wtoolset/anim/complex_ui/left_right_drawers/top_view.dart';
-import 'package:wtoolset/common.dart';
-import 'package:wtoolset/draw/bar_chart/bar_chart.dart';
+import 'package:wtoolset/anim/complex_ui/imitate_ku_gou/bottom_view.dart';
+import 'package:wtoolset/anim/complex_ui/imitate_ku_gou/top_view.dart';
 
-/// 左右抽屉效果
-class LeftRightDrawers extends StatefulWidget {
-  const LeftRightDrawers({Key? key}) : super(key: key);
+/// 模仿酷狗
+class ImitateKuGou extends StatefulWidget {
+  const ImitateKuGou({Key? key}) : super(key: key);
 
   @override
-  State<LeftRightDrawers> createState() => _LeftRightDrawersState();
+  State<ImitateKuGou> createState() => _ImitateKuGouState();
 }
 
-class _LeftRightDrawersState extends State<LeftRightDrawers>
+class _ImitateKuGouState extends State<ImitateKuGou>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   double maxSlide = 200;
 
   bool _canBeDragged = false;
+
+  int direction = -1;
 
   @override
   void initState() {
@@ -32,7 +30,7 @@ class _LeftRightDrawersState extends State<LeftRightDrawers>
     );
 
     Future.delayed(Duration.zero, () {
-      maxSlide = MediaQuery.of(context).size.width / 1.2;
+      maxSlide = MediaQuery.of(context).size.width / 1.4;
     });
 
     // _animationController.forward();
@@ -47,6 +45,26 @@ class _LeftRightDrawersState extends State<LeftRightDrawers>
   ///
   void toggle() {
     if (_animationController.isDismissed) {
+      _animationController.forward();
+    } else {
+      _animationController.reverse();
+    }
+  }
+
+  /// 处理左边按钮
+  void handleLeftToggle() {
+    if (_animationController.isDismissed) {
+      direction = -1;
+      _animationController.forward();
+    } else {
+      _animationController.reverse();
+    }
+  }
+
+  /// 处理右边按钮
+  void handleRightToggle() {
+    if (_animationController.isDismissed) {
+      direction = 1;
       _animationController.forward();
     } else {
       _animationController.reverse();
@@ -80,7 +98,7 @@ class _LeftRightDrawersState extends State<LeftRightDrawers>
 
     if (details.velocity.pixelsPerSecond.dx.abs() >= 365.0) {
       double visualVelocity = details.velocity.pixelsPerSecond.dx /
-          MediaQueryData.fromView(View.of(context)).size.width;
+          MediaQuery.of(context).size.width;
 
       _animationController.fling(velocity: visualVelocity);
     } else if (_animationController.value < 0.5) {
@@ -92,32 +110,62 @@ class _LeftRightDrawersState extends State<LeftRightDrawers>
 
   @override
   Widget build(BuildContext context) {
-    var myChild = Container(
-      color: Colors.yellow,
-    );
-
     return Scaffold(
       backgroundColor: const Color(0xffe1e1ff),
       body: GestureDetector(
         onHorizontalDragStart: onHorizontalDragStart,
         onHorizontalDragUpdate: onHorizontalDragUpdate,
         onHorizontalDragEnd: onHorizontalDragEnd,
-        // onTap: toggle,
+        onTap: toggle,
         child: AnimatedBuilder(
             animation: _animationController,
             builder: (context, _) {
-              double slide = maxSlide * _animationController.value;
-              double scale = 1 - (_animationController.value * 0.3);
+              double width = MediaQuery.of(context).size.width;
+
+              double paddingRight = width - width / 1.2;
+
+              /// 缩小之后的宽度
+              double scaleWidth = width * 0.8;
+
+              /// 缩小之后的两边边距
+              double paddingScale = width - scaleWidth;
+
+              /// 缩小之后的两边边距平均值
+              double avgPaddingScale = paddingScale / 2;
+
+              double scale = 1 - (_animationController.value * 0.2);
+
+              double topViewSlide = (direction * avgPaddingScale +
+                      -1 * direction * (width - paddingRight)) *
+                  _animationController.value;
+
+              double bottomViewSlide =
+                  direction * paddingRight / 2 * _animationController.value;
 
               return Stack(
-                // alignment: AlignmentDirectional.center,
                 children: [
-                  const BottomView(),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    // color: Colors.red,
+                    child: Column(
+                      children: [
+                        Transform(
+                          transform: Matrix4.identity()
+                            ..translate(bottomViewSlide)
+                            ..scale(Tween(begin: 0.7, end: 1.0)
+                                .evaluate(_animationController)),
+                          alignment: Alignment.center,
+                          child: const BottomView(),
+                        ),
+                      ],
+                    ),
+                  ),
                   Transform(
                     transform: Matrix4.identity()
-                      ..translate(slide)
+                      ..translate(topViewSlide)
                       ..scale(scale),
-                    alignment: Alignment.centerLeft,
+                    alignment: Alignment.center,
                     child: Container(
                       decoration: const BoxDecoration(
                         boxShadow: [
@@ -132,9 +180,8 @@ class _LeftRightDrawersState extends State<LeftRightDrawers>
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: TopView(
-                          onLeading: () {
-                            toggle();
-                          },
+                          onLeft: handleLeftToggle,
+                          onRight: handleRightToggle,
                         ),
                       ),
                     ),

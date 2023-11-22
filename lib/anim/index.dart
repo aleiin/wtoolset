@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wtoolset/anim/complex_ui/imitate_ku_gou/imitate_ku_gou.dart';
 import 'package:wtoolset/anim/complex_ui/index.dart';
 import 'package:wtoolset/anim/complex_ui/left_right_drawers/left_right_drawers.dart';
 import 'package:wtoolset/utils/route.dart';
@@ -19,6 +20,13 @@ class _HomePageState extends State<HomePage> {
 
     viewList.addAll(<Map<String, Object>>[
       {
+        "title": "简版左右抽屉视觉差",
+        "onTap": () {
+          const Navigator().pushRoute(context, const ComplexUI());
+          // Get.to(() => main05.MyApp());
+        },
+      },
+      {
         "title": "左右抽屉视觉差",
         "onTap": () {
           const Navigator().pushRoute(context, const LeftRightDrawers());
@@ -26,9 +34,9 @@ class _HomePageState extends State<HomePage> {
         },
       },
       {
-        "title": "复杂UI",
+        "title": "模仿酷狗",
         "onTap": () {
-          const Navigator().pushRoute(context, const ComplexUI());
+          const Navigator().pushRoute(context, const ImitateKuGou());
           // Get.to(() => main05.MyApp());
         },
       },

@@ -4,10 +4,15 @@ import 'package:flutter/material.dart';
 class TopView extends StatelessWidget {
   const TopView({
     Key? key,
-    this.onLeading,
+    this.onLeft,
+    this.onRight,
   }) : super(key: key);
 
-  final VoidCallback? onLeading;
+  ///
+  final VoidCallback? onLeft;
+
+  ///
+  final VoidCallback? onRight;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +40,7 @@ class TopView extends StatelessWidget {
                             child: const Icon(Icons.menu),
                           ),
                           onPressed: () {
-                            onLeading?.call();
+                            onLeft?.call();
                           },
                         ),
                         Expanded(
@@ -66,7 +71,7 @@ class TopView extends StatelessWidget {
                             child: const Icon(Icons.menu),
                           ),
                           onPressed: () {
-                            onLeading?.call();
+                            onRight?.call();
                           },
                         ),
                       ],
