@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wtoolset/anim/complex_ui/imitate_ku_gou/imitate_ku_gou.dart';
 import 'package:wtoolset/anim/complex_ui/index.dart';
 import 'package:wtoolset/anim/complex_ui/left_right_drawers/left_right_drawers.dart';
+import 'package:wtoolset/anim/complex_ui/rotation_3d/rotation_3d.dart';
 import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
@@ -37,6 +38,13 @@ class _HomePageState extends State<HomePage> {
         "title": "模仿酷狗",
         "onTap": () {
           const Navigator().pushRoute(context, const ImitateKuGou());
+          // Get.to(() => main05.MyApp());
+        },
+      },
+      {
+        "title": "3d旋转",
+        "onTap": () {
+          const Navigator().pushRoute(context, const Rotation3d());
           // Get.to(() => main05.MyApp());
         },
       },
