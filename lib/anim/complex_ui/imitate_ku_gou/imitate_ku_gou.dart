@@ -16,9 +16,8 @@ class _ImitateKuGouState extends State<ImitateKuGou>
 
   double maxSlide = 200;
 
-  bool _canBeDragged = false;
-
-  int direction = -1;
+  /// 是否是左边启动
+  bool isLeftStart = true;
 
   @override
   void initState() {
@@ -30,10 +29,8 @@ class _ImitateKuGouState extends State<ImitateKuGou>
     );
 
     Future.delayed(Duration.zero, () {
-      maxSlide = MediaQuery.of(context).size.width / 1.4;
+      maxSlide = MediaQuery.of(context).size.width;
     });
-
-    // _animationController.forward();
   }
 
   @override
@@ -54,7 +51,7 @@ class _ImitateKuGouState extends State<ImitateKuGou>
   /// 处理左边按钮
   void handleLeftToggle() {
     if (_animationController.isDismissed) {
-      direction = -1;
+      isLeftStart = true;
       _animationController.forward();
     } else {
       _animationController.reverse();
@@ -64,29 +61,53 @@ class _ImitateKuGouState extends State<ImitateKuGou>
   /// 处理右边按钮
   void handleRightToggle() {
     if (_animationController.isDismissed) {
-      direction = 1;
+      isLeftStart = false;
       _animationController.forward();
     } else {
       _animationController.reverse();
     }
   }
 
-  ///
+  /// dismissed：动画停止在开始处。
+  /// forward：动画正在从开始处运行到结束处（正向运行）。
+  /// reverse：动画正在从结束处运行到开始处（反向运行）。
+  /// completed：动画停止在结束处。
   void onHorizontalDragStart(DragStartDetails details) {
-    bool isDragOpenFromLeft = _animationController.isDismissed &&
-        details.globalPosition.dx < MediaQuery.of(context).size.width;
+    if (_animationController.isAnimating) {
+      return;
+    }
 
-    bool isDragCloseFromRight = _animationController.isCompleted &&
-        details.globalPosition.dx > maxSlide;
+    double width = MediaQuery.of(context).size.width;
 
-    _canBeDragged = isDragOpenFromLeft || isDragCloseFromRight;
+    double aveWidth = width / 2;
+
+    /// 动画停止在开始处
+    bool isDismissed = _animationController.isDismissed;
+
+    if (isDismissed) {
+      isLeftStart = _animationController.isDismissed &&
+          details.globalPosition.dx < aveWidth;
+    }
   }
 
   ///
   void onHorizontalDragUpdate(DragUpdateDetails details) {
-    if (_canBeDragged) {
+    if (_animationController.isAnimating) {
+      return;
+    }
+
+    double sign = details.primaryDelta!.sign;
+
+    if (isLeftStart) {
       double delta = details.primaryDelta! / maxSlide;
       _animationController.value += delta;
+    } else {
+      double delta = details.primaryDelta! / maxSlide;
+      if (sign == 1) {
+        _animationController.value -= delta;
+      } else if (sign == -1) {
+        _animationController.value += delta.abs();
+      } else {}
     }
   }
 
@@ -97,10 +118,17 @@ class _ImitateKuGouState extends State<ImitateKuGou>
     }
 
     if (details.velocity.pixelsPerSecond.dx.abs() >= 365.0) {
-      double visualVelocity = details.velocity.pixelsPerSecond.dx /
-          MediaQuery.of(context).size.width;
+      if (isLeftStart) {
+        double visualVelocity = details.velocity.pixelsPerSecond.dx /
+            MediaQuery.of(context).size.width;
 
-      _animationController.fling(velocity: visualVelocity);
+        _animationController.fling(velocity: visualVelocity);
+      } else {
+        double visualVelocity = details.velocity.pixelsPerSecond.dx /
+            -MediaQuery.of(context).size.width;
+
+        _animationController.fling(velocity: visualVelocity);
+      }
     } else if (_animationController.value < 0.5) {
       _animationController.reverse();
     } else {
@@ -116,7 +144,7 @@ class _ImitateKuGouState extends State<ImitateKuGou>
         onHorizontalDragStart: onHorizontalDragStart,
         onHorizontalDragUpdate: onHorizontalDragUpdate,
         onHorizontalDragEnd: onHorizontalDragEnd,
-        onTap: toggle,
+        // onTap: toggle,
         child: AnimatedBuilder(
             animation: _animationController,
             builder: (context, _) {
@@ -135,16 +163,31 @@ class _ImitateKuGouState extends State<ImitateKuGou>
 
               double scale = 1 - (_animationController.value * 0.2);
 
-              double topViewSlide = (direction * avgPaddingScale +
-                      -1 * direction * (width - paddingRight)) *
-                  _animationController.value;
+              ///
+              double topViewSlide = 0.0;
 
-              double bottomViewSlide =
-                  direction * paddingRight / 2 * _animationController.value;
+              ///
+              double bottomViewSlide = 0.0;
+
+              if (isLeftStart) {
+                /// 左边启动
+
+                topViewSlide = (-avgPaddingScale + (width - paddingRight)) *
+                    _animationController.value;
+
+                bottomViewSlide =
+                    -paddingRight / 2 * _animationController.value;
+              } else {
+                /// 右边启动
+                topViewSlide = (avgPaddingScale - (width - paddingRight)) *
+                    _animationController.value;
+
+                bottomViewSlide = paddingRight / 2 * _animationController.value;
+              }
 
               return Stack(
                 children: [
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                     // color: Colors.red,

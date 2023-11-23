@@ -15,7 +15,7 @@ class BottomView extends StatelessWidget {
       ),
       width: MediaQueryData.fromView(View.of(context)).size.width / 1.2,
       height: MediaQuery.of(context).size.height,
-      color: Colors.deepOrangeAccent,
+      // color: Colors.deepOrangeAccent,
       child: SingleChildScrollView(
         child: Column(
           children: [
