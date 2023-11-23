@@ -29,7 +29,7 @@ class TopView extends StatelessWidget {
                           icon: Container(
                             padding: const EdgeInsets.all(6),
                             decoration: const BoxDecoration(
-                              color: Color(0xffD8E5EEFF),
+                              color: Color(0xffd8e5eeff),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(Icons.menu),
@@ -43,7 +43,7 @@ class TopView extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 6, horizontal: 6),
                             decoration: BoxDecoration(
-                              color: const Color(0xffD5E2ECFF),
+                              color: const Color(0xffd5e2ecff),
                               borderRadius: BorderRadius.circular(99),
                             ),
                             child: const Row(
@@ -60,7 +60,7 @@ class TopView extends StatelessWidget {
                             padding: const EdgeInsets.all(6),
                             decoration: const BoxDecoration(
                               // color: Colors.orange,
-                              color: Color(0xffD8E5EEFF),
+                              color: Color(0xffd8e5eeff),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(Icons.menu),
@@ -101,7 +101,7 @@ class TopView extends StatelessWidget {
                             margin: const EdgeInsets.only(left: 10),
                             padding: const EdgeInsets.all(4),
                             decoration: const BoxDecoration(
-                              color: Color(0xffD8E5EEFF),
+                              color: Color(0xffd8e5eeff),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(
@@ -148,7 +148,7 @@ class TopView extends StatelessWidget {
                             width: 25,
                             height: 25,
                             decoration: const BoxDecoration(
-                              color: Color(0xffD8E5EEFF),
+                              color: Color(0xffd8e5eeff),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(
@@ -161,7 +161,7 @@ class TopView extends StatelessWidget {
                             width: 25,
                             height: 25,
                             decoration: const BoxDecoration(
-                              color: Color(0xffD8E5EEFF),
+                              color: Color(0xffd8e5eeff),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(
@@ -205,7 +205,7 @@ class TopView extends StatelessWidget {
                             width: 25,
                             height: 25,
                             decoration: const BoxDecoration(
-                              color: Color(0xffD8E5EEFF),
+                              color: Color(0xffd8e5eeff),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(
@@ -218,7 +218,7 @@ class TopView extends StatelessWidget {
                             width: 25,
                             height: 25,
                             decoration: const BoxDecoration(
-                              color: Color(0xffD8E5EEFF),
+                              color: Color(0xffd8e5eeff),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(
@@ -258,7 +258,7 @@ class TopView extends StatelessWidget {
                         bottom: MediaQueryData.fromView(View.of(context))
                             .viewPadding
                             .bottom),
-                    color: const Color(0xffBFC2D0FF),
+                    color: const Color(0xffbfc2d0ff),
                     child: const Column(
                       children: [
                         Icon(Icons.home),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:image/image.dart' as image;
 import 'package:wtoolset/draw/study/p18/03/particle_manage.dart';
 import 'package:wtoolset/draw/study/p18/03/particle.dart';
 import 'package:wtoolset/draw/study/p18/03/world_render.dart';

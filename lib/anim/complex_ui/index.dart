@@ -1,8 +1,5 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:wtoolset/common.dart';
-import 'package:wtoolset/draw/bar_chart/bar_chart.dart';
 
 class ComplexUI extends StatefulWidget {
   const ComplexUI({Key? key}) : super(key: key);

@@ -1,10 +1,7 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:wtoolset/anim/complex_ui/left_right_drawers/bottom_view.dart';
 import 'package:wtoolset/anim/complex_ui/left_right_drawers/top_view.dart';
-import 'package:wtoolset/common.dart';
-import 'package:wtoolset/draw/bar_chart/bar_chart.dart';
 
 /// 左右抽屉效果
 class LeftRightDrawers extends StatefulWidget {
