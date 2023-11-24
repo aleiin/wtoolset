@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:wtoolset/scroll/01/main.dart' as main01;
+import 'package:wtoolset/scroll/draggable_scrollable_sheet_demo/draggable_scrollable_sheet_demo.dart';
 import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,6 +23,12 @@ class _HomePageState extends State<HomePage> {
         "title": "仿掘金首页",
         "onTap": () {
           const Navigator().pushRoute(context, main01.MyApp());
+        },
+      },
+      {
+        "title": "DraggableScrollableSheetDemo",
+        "onTap": () {
+          const Navigator().pushRoute(context, DraggableScrollableSheetDemo());
         },
       },
     ]);
