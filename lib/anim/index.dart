@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wtoolset/anim/complex_ui/draggable_scrollable_sheet_list/draggable_scrollable_sheet_list.dart';
 import 'package:wtoolset/anim/complex_ui/imitate_ku_gou/imitate_ku_gou.dart';
 import 'package:wtoolset/anim/complex_ui/index.dart';
 import 'package:wtoolset/anim/complex_ui/left_right_drawers/left_right_drawers.dart';
@@ -45,6 +46,14 @@ class _HomePageState extends State<HomePage> {
         "title": "3d旋转",
         "onTap": () {
           const Navigator().pushRoute(context, const Rotation3d());
+          // Get.to(() => main05.MyApp());
+        },
+      },
+      {
+        "title": "拖拽列表",
+        "onTap": () {
+          const Navigator()
+              .pushRoute(context, const DraggableScrollableSheetList());
           // Get.to(() => main05.MyApp());
         },
       },

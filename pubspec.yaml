@@ -34,4 +34,9 @@ flutter:
 
   uses-material-design: true
 
+  assets:
+    - assets/efe-kurnaz.jpg
+    - assets/rodion-kutsaev.jpeg
+    - assets/steve-johnson.jpeg
+
 
