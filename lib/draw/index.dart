@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wtoolset/draw/bar_chart/index.dart';
+import 'package:wtoolset/draw/circular_progress/circular_progress.dart';
 import 'package:wtoolset/draw/coordinate_system/day_01/coordinate_system_day_01.dart';
+import 'package:wtoolset/draw/painter_badge/painter_badge.dart';
 import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,12 +20,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     viewList.addAll(<Map<String, Object>>[
       {
-        "title": "路径",
-        "onTap": () {
-          // Get.to(() => main05.MyApp());
-        },
-      },
-      {
         "title": "可操作坐标系",
         "onTap": () {
           const Navigator().pushRoute(context, const CoordinateSystemDay01());
@@ -33,6 +29,18 @@ class _HomePageState extends State<HomePage> {
         "title": "自绘条形图",
         "onTap": () {
           const Navigator().pushRoute(context, const BarChartDemo());
+        },
+      },
+      {
+        "title": "自绘角标",
+        "onTap": () {
+          const Navigator().pushRoute(context, const PainterBadge());
+        },
+      },
+      {
+        "title": "圆形进度条",
+        "onTap": () {
+          const Navigator().pushRoute(context, const CircularProgress());
         },
       },
     ]);

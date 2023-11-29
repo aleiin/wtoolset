@@ -99,9 +99,11 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
       return;
     }
 
+    ///
     final double flingVelocity =
         details.velocity.pixelsPerSecond.dy / maxHeight;
 
+    /// 判断拖动手势的速度方向
     if (flingVelocity < 0.0) {
       animationController.fling(velocity: max(2.0, -flingVelocity));
     } else if (flingVelocity > 0.0) {
