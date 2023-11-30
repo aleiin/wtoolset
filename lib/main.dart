@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ume_kit_console_plus/flutter_ume_kit_console_plus.dart';
+import 'package:flutter_ume_kit_device_plus/flutter_ume_kit_device_plus.dart';
 import 'package:flutter_ume_kit_perf_plus/flutter_ume_kit_perf_plus.dart';
+import 'package:flutter_ume_kit_show_code_plus/flutter_ume_kit_show_code_plus.dart';
 import 'package:flutter_ume_kit_ui_plus/flutter_ume_kit_ui_plus.dart';
 import 'package:flutter_ume_plus/flutter_ume_plus.dart';
 
@@ -20,10 +22,10 @@ void main() {
     ..register(const ColorPicker()) // 新插件
     ..register(const TouchIndicator()) // 新插件
     ..register(Performance())
-    // ..register(ShowCode())
+    ..register(const ShowCode())
     ..register(const MemoryInfoPage())
-    // ..register(CpuInfoPage())
-    // ..register(DeviceInfoPanel())
+    ..register(CpuInfoPage())
+    ..register(const DeviceInfoPanel())
     ..register(Console());
   // ..register(DioInspector(dio: dio));
 

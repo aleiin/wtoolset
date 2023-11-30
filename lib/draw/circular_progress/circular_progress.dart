@@ -20,7 +20,7 @@ class _CircularProgressState extends State<CircularProgress>
 
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 3),
     );
   }
 
@@ -70,7 +70,8 @@ class _CircularProgressState extends State<CircularProgress>
                 painter: CircularProgressPaint(
                   repaint: animationController,
                   // progress: 1 / 4,
-                  progress: 0.99,
+                  // progress: 0.99,
+                  progress: 1 / 14,
                   backgroundColor: const Color(0xffDDF4ED),
                   progressColor: const Color(0xff60F1A4),
                 ),
@@ -90,7 +91,7 @@ class _CircularProgressState extends State<CircularProgress>
                     '完成度' * 10,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       color: Colors.white,
                     ),
@@ -99,18 +100,19 @@ class _CircularProgressState extends State<CircularProgress>
                     animation: animationController,
                     builder: (BuildContext context, Widget? child) {
                       return RichText(
-                        text: TextSpan(
+                        text: const TextSpan(
                           children: <InlineSpan>[
                             TextSpan(
-                              text: (animationController.value)
-                                  .toStringAsFixed(2),
+                              text: '14',
+                              // text: (animationController.value)
+                              //     .toStringAsFixed(1),
                               style: TextStyle(
-                                fontSize: 24,
+                                fontSize: 22,
                                 color: Colors.white,
                               ),
                             ),
                             TextSpan(
-                              text: '/1.0',
+                              text: '/14',
                               style: TextStyle(
                                 color: Colors.white,
                               ),

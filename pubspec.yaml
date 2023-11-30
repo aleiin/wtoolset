@@ -18,11 +18,12 @@ dependencies:
   mobile_scanner: ^3.5.2
   flutter_ume_plus: ^3.0.0
   flutter_ume_kit_ui_plus: ^2.0.0
-#  flutter_ume_kit_device_plus: ^2.0.0
+  flutter_ume_kit_device_plus: ^2.0.0
   flutter_ume_kit_perf_plus: ^2.0.0
-#  flutter_ume_kit_show_code_plus: ^3.0.0
+  flutter_ume_kit_show_code_plus: ^3.0.0
   flutter_ume_kit_console_plus: ^2.0.0
-#  flutter_ume_kit_dio_plus: ^3.4.1
+  flutter_ume_kit_dio_plus: ^3.4.1
+
 
 dev_dependencies:
   flutter_test:
