@@ -215,6 +215,7 @@ class LongPressBarChartPainter extends CustomPainter {
       Paint()..color = Colors.blue.withOpacity(0.3),
     );
 
+    /// 找出y轴上最大的宽度
     findYMaxWidth();
 
     xStep = (size.width - _kScaleWidth) / data.xData.length;
@@ -236,7 +237,7 @@ class LongPressBarChartPainter extends CustomPainter {
     drawYText(canvas, size);
     drawXText(canvas, size);
     // drawBarChart(canvas, size);
-    drawBarChartPro(canvas, size);
+    // drawBarChartPro(canvas, size);
     collectPoints(canvas, size);
     drawLineChart(canvas, size);
 
