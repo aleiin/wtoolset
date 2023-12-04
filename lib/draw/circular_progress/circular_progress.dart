@@ -2,10 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'dart:ui' as ui;
-
 /// 圆形进度条
-/// 示例代码[https://book.flutterchina.club/chapter10/gradient_circular_progress_demo.html]
 class CircularProgress extends StatefulWidget {
   const CircularProgress({Key? key}) : super(key: key);
 
@@ -143,6 +140,11 @@ class _CircularProgressState extends State<CircularProgress>
                               progress: progress,
                               backgroundColor: const Color(0xffDDF4ED),
                               progressColor: const Color(0xff60F1A4),
+                              colors: [
+                                const Color(0xFF60F1A4),
+                                const Color(0xFF4FD3CD),
+                              ],
+                              stops: [1.0 / 2, 1.0],
                               // strokeCap: StrokeCap.butt,
                             ),
                           ),
@@ -214,11 +216,11 @@ class _CircularProgressState extends State<CircularProgress>
                           //   ],
                           // ),
                         ),
-                        // Container(
-                        //   width: MediaQuery.of(context).size.width,
-                        //   height: 1,
-                        //   color: Colors.black87,
-                        // ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 1,
+                          color: Colors.black87,
+                        ),
                       ],
                     ),
                   ),
@@ -309,11 +311,11 @@ class _CircularProgressState extends State<CircularProgress>
                 ],
               ),
             ),
-            // Container(
-            //   width: 1,
-            //   height: MediaQuery.of(context).size.height,
-            //   color: Colors.black87,
-            // ),
+            Container(
+              width: 1,
+              height: MediaQuery.of(context).size.height,
+              color: Colors.black87,
+            ),
           ],
         ),
       ),
@@ -328,6 +330,8 @@ class CircularProgressPaint extends CustomPainter {
     this.backgroundColor = Colors.deepPurpleAccent,
     this.progressColor = Colors.red,
     this.strokeCap = StrokeCap.round,
+    this.colors,
+    this.stops,
     required this.repaint,
   }) : super(repaint: repaint);
 
@@ -345,6 +349,12 @@ class CircularProgressPaint extends CustomPainter {
 
   ///
   final StrokeCap strokeCap;
+
+  ///
+  final List<Color>? colors;
+
+  ///
+  final List<double>? stops;
 
   /// 动画
   final Animation<double> repaint;
@@ -412,33 +422,30 @@ class CircularProgressPaint extends CustomPainter {
         sweepAngle = sweepAngle - endArc;
       }
 
-      var colors = [
-        Color(0xFFF60C0C),
-        Color(0xFFF3B913),
-        Color(0xFFE7F716),
-        Color(0xFF3DF30B),
-        Color(0xFF0DF6EF),
-        Color(0xFF0829FB),
-        Color(0xFFB709F4),
-      ];
-
-      var pos = [1.0 / 7, 2.0 / 7, 3.0 / 7, 4.0 / 7, 5.0 / 7, 6.0 / 7, 1.0];
+      /// 渐变示例
+      /// var colors = [
+      ///   Color(0xFF60F1A4),
+      ///   Color(0xFF4FD3CD),
+      /// ];
+      /// var stops = [1.0 / 2, 2.0 / 2];
+      if ((colors ?? []).isNotEmpty &&
+          (stops ?? []).isNotEmpty &&
+          colors!.length == stops!.length) {
+        paintProgress.shader = LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: colors!,
+          stops: stops,
+          tileMode: TileMode.clamp,
+        ).createShader(rect);
+      }
 
       canvas.drawArc(
         rect,
         -pi / 2 + startArc,
         sweepAngle,
         false,
-        paintProgress
-          ..shader = ui.Gradient.sweep(
-            Offset(size.width / 2, size.height / 2),
-            colors,
-            pos,
-            TileMode.clamp,
-            // TileMode.clamp,
-            0,
-            pi * 2,
-          ),
+        paintProgress,
       );
     }
   }
