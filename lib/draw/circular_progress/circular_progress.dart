@@ -164,8 +164,8 @@ class _CircularProgressState extends State<CircularProgress>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Text('自绘'),
-                                  Text((animationController.value * progress)
-                                      .toStringAsFixed(3)),
+                                  Text(
+                                      '${(animationController.value * progress * 10000).toStringAsFixed(0)}/10000'),
                                 ],
                               );
                             },
@@ -173,11 +173,11 @@ class _CircularProgressState extends State<CircularProgress>
                           // child: Column(
                           //   mainAxisAlignment: MainAxisAlignment.center,
                           //   children: [
-                          //     Text(
+                          //     const Text(
                           //       '完成度',
                           //       maxLines: 1,
                           //       overflow: TextOverflow.ellipsis,
-                          //       style: const TextStyle(
+                          //       style: TextStyle(
                           //         fontSize: 14,
                           //         color: Colors.white,
                           //       ),
@@ -215,6 +215,108 @@ class _CircularProgressState extends State<CircularProgress>
                           //     ),
                           //   ],
                           // ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 1,
+                          color: Colors.black87,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
+                    width: 182,
+                    height: 182,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          width: 182,
+                          height: 182,
+                          color: Colors.orange,
+                          child: CustomPaint(
+                            painter: CircularProgressPaint(
+                              repaint: animationController,
+                              progress: progress,
+                              backgroundColor: const Color(0xffDDF4ED),
+                              progressColor: const Color(0xff60F1A4),
+                              colors: [
+                                const Color(0xFF60F1A4),
+                                const Color(0xFF4FD3CD),
+                              ],
+                              stops: [1.0 / 2, 1.0],
+                              // strokeCap: StrokeCap.butt,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: sqrt(2) * (182 / 2 - 20),
+                          height: sqrt(2) * (182 / 2 - 20),
+                          decoration: const BoxDecoration(
+                            color: Colors.deepPurpleAccent,
+                            // shape: BoxShape.circle,
+                          ),
+                          alignment: Alignment.center,
+                          // child: AnimatedBuilder(
+                          //   animation: animationController,
+                          //   builder: (BuildContext context, Widget? child) {
+                          //     return Column(
+                          //       mainAxisAlignment: MainAxisAlignment.center,
+                          //       children: [
+                          //         const Text('自绘'),
+                          //         Text(
+                          //             '${(animationController.value * progress * 10000).toStringAsFixed(0)}/10000'),
+                          //       ],
+                          //     );
+                          //   },
+                          // ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                '完成度',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(height: 7),
+                              AnimatedBuilder(
+                                animation: animationController,
+                                builder: (BuildContext context, Widget? child) {
+                                  String p = '999';
+                                  return RichText(
+                                    text: TextSpan(
+                                      children: <InlineSpan>[
+                                        TextSpan(
+                                          text: (animationController.value *
+                                                  progress *
+                                                  1000)
+                                              .toStringAsFixed(0),
+                                          style: const TextStyle(
+                                            fontSize: 24,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        const TextSpan(
+                                          text: '/1000',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width,
