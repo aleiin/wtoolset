@@ -4,6 +4,7 @@ import 'package:wtoolset/draw/circular_progress/circular_progress.dart';
 import 'package:wtoolset/draw/coordinate_system/day_01/coordinate_system_day_01.dart';
 import 'package:wtoolset/draw/long_press_bar_chart/long_press_bar_chart_demo.dart';
 import 'package:wtoolset/draw/painter_badge/painter_badge.dart';
+import 'package:wtoolset/draw/painter_brace/painter_brace.dart';
 import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
@@ -39,9 +40,15 @@ class _HomePageState extends State<HomePage> {
         },
       },
       {
-        "title": "自绘角标",
+        "title": "通过圆弧自绘角标",
         "onTap": () {
           const Navigator().pushRoute(context, const PainterBadge());
+        },
+      },
+      {
+        "title": "自绘大括号",
+        "onTap": () {
+          const Navigator().pushRoute(context, const PainterBrace());
         },
       },
       {
