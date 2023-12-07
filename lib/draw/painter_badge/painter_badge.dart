@@ -35,7 +35,7 @@ class PainterBadge extends StatelessWidget {
                           text: '通过圆弧绘制',
                           bgColor: Color(0xff77DEA7),
                           textStyle: TextStyle(
-                            fontSize: 10,
+                            fontSize: 30,
                             color: Colors.white,
                           ),
                           shadows: [
@@ -51,14 +51,14 @@ class PainterBadge extends StatelessWidget {
                       ),
                     ),
                     const Positioned(
-                      top: 50,
+                      top: 100,
                       child: CustomPaint(
                         painter: PainterBadgePaint(
                           isQuadraticBezier: true,
                           text: '贝塞尔曲绘制',
                           bgColor: Color(0xff77DEA7),
                           textStyle: TextStyle(
-                            fontSize: 10,
+                            fontSize: 30,
                             color: Colors.white,
                           ),
                           shadows: [

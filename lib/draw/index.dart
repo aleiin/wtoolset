@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+
     viewList.addAll(<Map<String, Object>>[
       {
         "title": "可操作坐标系",
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> {
         },
       },
       {
-        "title": "通过圆弧自绘角标",
+        "title": "自绘角标",
         "onTap": () {
           const Navigator().pushRoute(context, const PainterBadge());
         },

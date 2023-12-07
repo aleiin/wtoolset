@@ -4,6 +4,7 @@ import 'package:wtoolset/anim/complex_ui/imitate_ku_gou/imitate_ku_gou.dart';
 import 'package:wtoolset/anim/complex_ui/index.dart';
 import 'package:wtoolset/anim/complex_ui/left_right_drawers/left_right_drawers.dart';
 import 'package:wtoolset/anim/complex_ui/rotation_3d/rotation_3d.dart';
+import 'package:wtoolset/anim/flow_slide_layout/flow_slide_layout.dart';
 import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
@@ -54,6 +55,13 @@ class _HomePageState extends State<HomePage> {
         "onTap": () {
           const Navigator()
               .pushRoute(context, const DraggableScrollableSheetList());
+          // Get.to(() => main05.MyApp());
+        },
+      },
+      {
+        "title": "Flow滑动布局",
+        "onTap": () {
+          const Navigator().pushRoute(context, const FlowSlideLayout());
           // Get.to(() => main05.MyApp());
         },
       },

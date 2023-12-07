@@ -208,8 +208,6 @@ class LongPressBarChartPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    print('print 16:43: $longPressOffset');
-
     canvas.drawRect(
       Rect.fromLTWH(0, 0, size.width, size.height),
       Paint()..color = Colors.blue.withOpacity(0.3),
@@ -379,7 +377,10 @@ class LongPressBarChartPainter extends CustomPainter {
 
     canvas.save();
 
+    /// 将原点移回左上角
     canvas.translate(0, -size.height);
+
+    // drawAssistCircle(canvas, size, offset: Offset.zero);
 
     // drawAssistCircle(
     //   canvas,
@@ -387,9 +388,7 @@ class LongPressBarChartPainter extends CustomPainter {
     // );
 
     // drawAssistCircle(canvas, size, offset: longPressOffset?.value);
-    drawAssistCircle(canvas, size, offset: Offset(size.width, size.height));
-
-    print('print 18:01: ${longPressOffset?.value}');
+    // drawAssistCircle(canvas, size, offset: Offset(size.width, size.height));
 
     Paint auxiliaryLinePaint = Paint()
       ..color = Colors.purpleAccent
@@ -400,11 +399,11 @@ class LongPressBarChartPainter extends CustomPainter {
       /// 判断左右边界
 
       /// 绘制x轴
-      canvas.drawLine(
-        Offset(0 + _kScaleWidth, longPressOffset!.value.dy),
-        Offset(size.width, longPressOffset!.value.dy),
-        auxiliaryLinePaint,
-      );
+      // canvas.drawLine(
+      //   Offset(0 + _kScaleWidth, longPressOffset!.value.dy),
+      //   Offset(size.width, longPressOffset!.value.dy),
+      //   auxiliaryLinePaint,
+      // );
 
       if (longPressOffset!.value.dx < _kScaleWidth) {
         /// 绘制y轴
@@ -427,18 +426,18 @@ class LongPressBarChartPainter extends CustomPainter {
 
       if (longPressOffset!.value.dy <= 0) {
         /// 绘制x轴
-        canvas.drawLine(
-          Offset(0 + _kScaleWidth, 0),
-          Offset(size.width, 0),
-          auxiliaryLinePaint,
-        );
+        // canvas.drawLine(
+        //   Offset(0 + _kScaleWidth, 0),
+        //   Offset(size.width, 0),
+        //   auxiliaryLinePaint,
+        // );
       } else if (longPressOffset!.value.dy > (size.height - _kScaleHeight)) {
         /// 绘制x轴
-        canvas.drawLine(
-          Offset(0 + _kScaleWidth, size.height - _kScaleHeight),
-          Offset(size.width, size.height - _kScaleHeight),
-          auxiliaryLinePaint,
-        );
+        // canvas.drawLine(
+        //   Offset(0 + _kScaleWidth, size.height - _kScaleHeight),
+        //   Offset(size.width, size.height - _kScaleHeight),
+        //   auxiliaryLinePaint,
+        // );
       }
 
       /// 绘制y轴
@@ -466,11 +465,11 @@ class LongPressBarChartPainter extends CustomPainter {
     // }
     else {
       /// 绘制x轴
-      canvas.drawLine(
-        Offset(0 + _kScaleWidth, longPressOffset!.value.dy),
-        Offset(size.width, longPressOffset!.value.dy),
-        auxiliaryLinePaint,
-      );
+      // canvas.drawLine(
+      //   Offset(0 + _kScaleWidth, longPressOffset!.value.dy),
+      //   Offset(size.width, longPressOffset!.value.dy),
+      //   auxiliaryLinePaint,
+      // );
 
       /// 绘制y轴
       canvas.drawLine(
@@ -701,9 +700,22 @@ class LongPressBarChartPainter extends CustomPainter {
     linePaint.strokeWidth = 1;
 
     PathMetrics pms = path.computeMetrics();
-    for (var pm in pms) {
+
+    Rect bounds = path.getBounds();
+
+    canvas.drawRect(
+      bounds,
+      Paint()
+        ..color = Colors.orange
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1,
+    );
+
+    for (PathMetric pm in pms) {
       canvas.drawPath(
-          pm.extractPath(0, pm.length * animation.value), linePaint);
+        pm.extractPath(0, pm.length * animation.value),
+        linePaint,
+      );
     }
   }
 

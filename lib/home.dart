@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:wtoolset/anim/index.dart' as anim;
 import 'package:wtoolset/draw/index.dart' as draw;
+import 'package:wtoolset/home_item.dart';
+import 'package:wtoolset/layout/layout.dart';
 import 'package:wtoolset/overlay/toast/toast.dart';
 import 'package:wtoolset/touch/index.dart' as touch;
 import 'package:wtoolset/editController/index.dart' as controller;
@@ -75,6 +77,12 @@ class _HomePageState extends State<HomePage> {
           const Navigator().pushRoute(context, const test.HomePage());
         },
       },
+      {
+        "title": "布局",
+        "onTap": () {
+          const Navigator().pushRoute(context, const LayoutPage());
+        },
+      },
     ];
   }
 
@@ -103,33 +111,9 @@ class _HomePageState extends State<HomePage> {
         child: ListView.builder(
           itemCount: viewList.length,
           itemBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 48,
-              margin: const EdgeInsets.only(
-                top: 10,
-                left: 12,
-                right: 12,
-              ),
-              decoration: const BoxDecoration(
-                // color: Colors.greenAccent,
-                border: Border(
-                  bottom: BorderSide(color: Colors.grey),
-                ),
-              ),
-              child: InkWell(
-                onTap: viewList[index]['onTap'] as Function(),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(viewList[index]['title'] as String),
-                    ),
-                    const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 18,
-                    )
-                  ],
-                ),
-              ),
+            return HomeItem(
+              text: viewList[index]['title'] as String,
+              onCallBack: viewList[index]['onTap'] as Function(),
             );
           },
         ),
