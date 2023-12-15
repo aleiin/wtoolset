@@ -5,6 +5,7 @@ import 'package:wtoolset/anim/complex_ui/index.dart';
 import 'package:wtoolset/anim/complex_ui/left_right_drawers/left_right_drawers.dart';
 import 'package:wtoolset/anim/complex_ui/rotation_3d/rotation_3d.dart';
 import 'package:wtoolset/anim/flow_slide_layout/flow_slide_layout.dart';
+import 'package:wtoolset/home_item.dart';
 import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
@@ -79,33 +80,9 @@ class _HomePageState extends State<HomePage> {
         child: ListView.builder(
           itemCount: viewList.length,
           itemBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 48,
-              margin: const EdgeInsets.only(
-                top: 10,
-                left: 12,
-                right: 12,
-              ),
-              decoration: const BoxDecoration(
-                // color: Colors.greenAccent,
-                border: Border(
-                  bottom: BorderSide(color: Colors.grey),
-                ),
-              ),
-              child: InkWell(
-                onTap: viewList[index]['onTap'] as Function(),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(viewList[index]['title'] as String),
-                    ),
-                    const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 18,
-                    )
-                  ],
-                ),
-              ),
+            return HomeItem(
+              text: viewList[index]['title'] as String,
+              onCallBack: viewList[index]['onTap'] as Function(),
             );
           },
         ),

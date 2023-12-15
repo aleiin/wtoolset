@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:wtoolset/home_item.dart';
+import 'package:wtoolset/layout/expand_collapse/expand_collapse_demo.dart';
 import 'package:wtoolset/layout/flow/burst_flow.dart';
 import 'package:wtoolset/layout/flow/circle_flow.dart';
 import 'package:wtoolset/layout/flow/color_block_flow.dart';
 import 'package:wtoolset/layout/flow/specific_burst_flow.dart';
+import 'package:wtoolset/layout/no_network/no_network.dart';
 
 import 'package:wtoolset/utils/route.dart';
 
@@ -43,6 +45,18 @@ class _LayoutPageState extends State<LayoutPage> {
         "title": "特定角度扩散flow布局",
         "onTap": () {
           const Navigator().pushRoute(context, const SpecificBurstFlow());
+        },
+      },
+      {
+        "title": "无网络布局",
+        "onTap": () {
+          const Navigator().pushRoute(context, const NoNetwork());
+        },
+      },
+      {
+        "title": "展开和收缩组件",
+        "onTap": () {
+          const Navigator().pushRoute(context, const ExpandCollapseDemo());
         },
       },
     ]);
