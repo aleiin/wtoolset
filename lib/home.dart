@@ -12,6 +12,7 @@ import 'package:wtoolset/scroll/index.dart' as scroll;
 import 'package:wtoolset/path/index.dart' as path;
 import 'package:wtoolset/test/index.dart' as test;
 import 'package:wtoolset/utils/route.dart';
+import 'package:wtoolset/utils/utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -81,6 +82,12 @@ class _HomePageState extends State<HomePage> {
         "title": "布局",
         "onTap": () {
           const Navigator().pushRoute(context, const LayoutPage());
+        },
+      },
+      {
+        "title": "工具类",
+        "onTap": () {
+          const Navigator().pushRoute(context, const UtilPage());
         },
       },
     ];
