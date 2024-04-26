@@ -6,6 +6,7 @@ import 'package:wtoolset/layout/flow/circle_flow.dart';
 import 'package:wtoolset/layout/flow/color_block_flow.dart';
 import 'package:wtoolset/layout/flow/specific_burst_flow.dart';
 import 'package:wtoolset/layout/no_network/no_network.dart';
+import 'package:wtoolset/layout/stack/indexed_stack.dart';
 
 import 'package:wtoolset/utils/route.dart';
 
@@ -57,6 +58,12 @@ class _LayoutPageState extends State<LayoutPage> {
         "title": "展开和收缩组件",
         "onTap": () {
           const Navigator().pushRoute(context, const ExpandCollapseDemo());
+        },
+      },
+      {
+        "title": "卡片布局",
+        "onTap": () {
+          const Navigator().pushRoute(context, const IndexedStackDemo());
         },
       },
     ]);

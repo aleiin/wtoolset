@@ -15,33 +15,37 @@ class HomeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 52,
-      margin: const EdgeInsets.only(
-        left: 12,
-        right: 12,
-      ),
-      child: InkWell(
-        onTap: onCallBack,
+    return InkWell(
+      onTap: onCallBack,
+      child: Container(
+        margin: const EdgeInsets.only(
+          left: 12,
+        ),
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: Colors.grey,
+            ),
+          ),
+        ),
         child: Column(
           children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Expanded(
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                     child: Text(text),
                   ),
-                  const Icon(
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(right: 8),
+                  child: Icon(
                     Icons.arrow_forward_ios,
                     size: 18,
                   ),
-                ],
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 1,
-              color: Colors.grey,
+                ),
+              ],
             ),
           ],
         ),
