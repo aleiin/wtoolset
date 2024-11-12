@@ -121,62 +121,69 @@ class _ScanPageV2State extends State<ScanPageV2> {
                           textAlign: TextAlign.center,
                           style: const TextStyle(color: Colors.white),
                         ),
-                        Container(
-                          // color: Colors.red,
-                          margin: const EdgeInsets.symmetric(vertical: 20),
-                          child: ValueListenableBuilder<TorchState>(
-                            valueListenable: controller.torchState,
-                            builder: (context, value, child) {
-                              final Color iconColor;
-
-                              switch (value) {
-                                case TorchState.off:
-                                  iconColor = Colors.white;
-                                  break;
-                                case TorchState.on:
-                                  iconColor = Colors.yellow;
-                                  break;
-                              }
-
-                              return Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.3),
-                                  borderRadius: BorderRadius.circular(100),
-                                ),
-                                child: IconButton(
-                                  onPressed: () => controller.toggleTorch(),
-                                  icon: Icon(
-                                    Icons.flashlight_on,
-                                    color: iconColor,
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                        ValueListenableBuilder<TorchState>(
-                          valueListenable: controller.torchState,
-                          builder: (context, value, child) {
-                            String label = '手電筒';
-
-                            switch (value) {
-                              case TorchState.off:
-                                label = '打開手電筒';
-                                break;
-                              case TorchState.on:
-                                label = '關閉手電筒';
-                                break;
-                            }
-
-                            return Text(
-                              label,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(color: Colors.white),
-                            );
-                          },
-                        ),
+                        // Container(
+                        //   // color: Colors.red,
+                        //   margin: const EdgeInsets.symmetric(vertical: 20),
+                        //   child: ValueListenableBuilder<TorchState>(
+                        //     valueListenable: controller.torchState,
+                        //     builder: (context, value, child) {
+                        //       Color iconColor;
+                        //
+                        //       switch (value) {
+                        //         case TorchState.off:
+                        //           iconColor = Colors.white;
+                        //           break;
+                        //         case TorchState.on:
+                        //           iconColor = Colors.yellow;
+                        //           break;
+                        //         case TorchState.auto:
+                        //         case TorchState.unavailable:
+                        //         default:
+                        //           iconColor = Colors.white;
+                        //       }
+                        //
+                        //       return Container(
+                        //         decoration: BoxDecoration(
+                        //           color: Colors.black.withOpacity(0.3),
+                        //           borderRadius: BorderRadius.circular(100),
+                        //         ),
+                        //         child: IconButton(
+                        //           onPressed: () => controller.toggleTorch(),
+                        //           icon: Icon(
+                        //             Icons.flashlight_on,
+                        //             color: iconColor,
+                        //           ),
+                        //         ),
+                        //       );
+                        //     },
+                        //   ),
+                        // ),
+                        // ValueListenableBuilder<TorchState>(
+                        //   valueListenable: controller.torchState,
+                        //   builder: (context, value, child) {
+                        //     String label = '手電筒';
+                        //
+                        //     switch (value) {
+                        //       case TorchState.off:
+                        //         label = '打開手電筒';
+                        //         break;
+                        //       case TorchState.on:
+                        //         label = '關閉手電筒';
+                        //         break;
+                        //       case TorchState.auto:
+                        //       case TorchState.unavailable:
+                        //         break;
+                        //     }
+                        //
+                        //     return Text(
+                        //       label,
+                        //       maxLines: 2,
+                        //       overflow: TextOverflow.ellipsis,
+                        //       textAlign: TextAlign.center,
+                        //       style: const TextStyle(color: Colors.white),
+                        //     );
+                        //   },
+                        // ),
                       ],
                     ),
                   ),

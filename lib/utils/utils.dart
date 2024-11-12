@@ -5,6 +5,7 @@ import 'package:wtoolset/utils/route.dart';
 import 'package:wtoolset/utils/widget/currency_text_input_formatter_page.dart';
 import 'package:wtoolset/utils/widget/integer_input_formatter_page.dart';
 import 'package:wtoolset/utils/widget/phone_input_formatter_page.dart';
+import 'package:wtoolset/utils/widget/voice_recording_page.dart';
 
 class UtilPage extends StatefulWidget {
   const UtilPage({Key? key}) : super(key: key);
@@ -39,6 +40,12 @@ class _UtilPageState extends State<UtilPage> {
         "onTap": () {
           const Navigator()
               .pushRoute(context, const PhoneTextInputFormatterPage());
+        },
+      },
+      {
+        "title": "语音录制",
+        "onTap": () {
+          const Navigator().pushRoute(context, const VoiceRecordingPage());
         },
       },
     ]);
