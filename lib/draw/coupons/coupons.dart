@@ -1,34 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:wtoolset/widget/custom_widget.dart';
 
-/// create by 韦斌 on 2021/9/30 16:18
-/// 说明: 试验性界面
-class BusinessTestPage extends StatefulWidget {
-  /// 构造函数
-  const BusinessTestPage({
-    this.appBar,
-    Key? key,
-  }) : super(key: key);
+class Coupons extends StatelessWidget {
+  const Coupons({super.key});
 
-  ///
-  final Widget? appBar;
-
-  @override
-  _BusinessTestPageState createState() => _BusinessTestPageState();
-}
-
-class _BusinessTestPageState extends State<BusinessTestPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.green,
-      padding: const EdgeInsets.all(10),
-      child: ClipPath(
-        clipper: Clipper(),
-        child: Container(
-          color: Colors.orange.withOpacity(0.9),
-          width: 300,
-          height: 100,
-          child: widget.appBar,
+    return CustomWidget(
+      titleLabel: '自定义优惠券',
+      body: Container(
+        // color: Colors.green,
+        padding: const EdgeInsets.all(10),
+        child: ClipPath(
+          clipper: Clipper(),
+          child: Container(
+            color: Colors.orange.withOpacity(0.9),
+            width: 300,
+            height: 100,
+          ),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wtoolset/draw/bar_chart/index.dart';
 import 'package:wtoolset/draw/circular_progress/circular_progress.dart';
 import 'package:wtoolset/draw/coordinate_system/day_01/coordinate_system_day_01.dart';
+import 'package:wtoolset/draw/coupons/coupons.dart';
 import 'package:wtoolset/draw/long_press_bar_chart/long_press_bar_chart_demo.dart';
 import 'package:wtoolset/draw/painter_badge/painter_badge.dart';
 import 'package:wtoolset/draw/painter_brace/painter_brace.dart';
@@ -56,6 +57,12 @@ class _HomePageState extends State<HomePage> {
         "title": "圆形进度条",
         "onTap": () {
           const Navigator().pushRoute(context, const CircularProgress());
+        },
+      },
+      {
+        "title": "自定义优惠卷",
+        "onTap": () {
+          const Navigator().pushRoute(context, const Coupons());
         },
       },
     ]);

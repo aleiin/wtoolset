@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:wtoolset/utils/util/custom_image.dart';
 
 /// Flow滑动布局
 class FlowSlideLayout extends StatefulWidget {
@@ -78,6 +79,7 @@ class _FlowSlideLayoutState extends State<FlowSlideLayout>
       appBar: AppBar(
         title: const Text('Flow滑动布局'),
       ),
+      resizeToAvoidBottomInset: true,
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onHorizontalDragUpdate: onHorizontalDragUpdate,
@@ -92,14 +94,16 @@ class _FlowSlideLayoutState extends State<FlowSlideLayout>
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 color: Colors.amber,
+                child: CustomImage.network(CustomImage.imgUrl),
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
-                color: Colors.deepPurpleAccent,
+                color: Colors.deepPurpleAccent.withOpacity(0.6),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    TextField(),
                     TextButton(
                       onPressed: close,
                       child: const Text(

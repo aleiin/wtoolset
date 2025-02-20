@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 
 class ComplexUI extends StatefulWidget {
-  const ComplexUI({Key? key}) : super(key: key);
+  const ComplexUI({super.key});
 
   @override
   State<ComplexUI> createState() => _ComplexUIState();

@@ -5,17 +5,15 @@ import 'package:wtoolset/draw/index.dart' as draw;
 import 'package:wtoolset/home_item.dart';
 import 'package:wtoolset/layout/layout.dart';
 import 'package:wtoolset/overlay/toast/toast.dart';
-import 'package:wtoolset/touch/index.dart' as touch;
 import 'package:wtoolset/editController/index.dart' as controller;
 import 'package:wtoolset/performance/index.dart' as performance;
 import 'package:wtoolset/scroll/index.dart' as scroll;
-import 'package:wtoolset/path/index.dart' as path;
 import 'package:wtoolset/test/index.dart' as test;
 import 'package:wtoolset/utils/route.dart';
 import 'package:wtoolset/utils/utils.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -43,12 +41,6 @@ class _HomePageState extends State<HomePage> {
         },
       },
       {
-        "title": "点击",
-        "onTap": () {
-          const Navigator().pushRoute(context, const touch.HomePage());
-        },
-      },
-      {
         "title": "自定义控制器",
         "onTap": () {
           const Navigator().pushRoute(context, const controller.HomePage());
@@ -64,12 +56,6 @@ class _HomePageState extends State<HomePage> {
         "title": "滑动",
         "onTap": () {
           const Navigator().pushRoute(context, const scroll.HomePage());
-        },
-      },
-      {
-        "title": "path",
-        "onTap": () {
-          const Navigator().pushRoute(context, const path.HomePage());
         },
       },
       {

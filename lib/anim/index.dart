@@ -5,11 +5,12 @@ import 'package:wtoolset/anim/complex_ui/index.dart';
 import 'package:wtoolset/anim/complex_ui/left_right_drawers/left_right_drawers.dart';
 import 'package:wtoolset/anim/complex_ui/rotation_3d/rotation_3d.dart';
 import 'package:wtoolset/anim/flow_slide_layout/flow_slide_layout.dart';
+import 'package:wtoolset/anim/rotating_planet/rotating_planet.dart';
 import 'package:wtoolset/home_item.dart';
 import 'package:wtoolset/utils/route.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -63,6 +64,13 @@ class _HomePageState extends State<HomePage> {
         "title": "Flow滑动布局",
         "onTap": () {
           const Navigator().pushRoute(context, const FlowSlideLayout());
+          // Get.to(() => main05.MyApp());
+        },
+      },
+      {
+        "title": "旋转星球",
+        "onTap": () {
+          const Navigator().pushRoute(context, const RotatingPlanet());
           // Get.to(() => main05.MyApp());
         },
       },
